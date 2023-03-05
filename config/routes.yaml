@@ -1,0 +1,16 @@
+controllers:
+    resource: ../src/Controller/
+    type: attribute
+
+# Path: config\routes.yaml
+# index:
+#     path: /hello/{name}
+#     controller: 'App\Controller\DefaultController::index'
+
+
+
+# hello:
+#     path: /hello/{name}
+#     controller: 'App\Controller\HelloController::hello'
+#     defaults:
+#         name: 'Arch'
