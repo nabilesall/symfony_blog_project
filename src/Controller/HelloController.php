@@ -8,12 +8,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HelloController extends AbstractController
 {
-    /**
-     * @Route("/hello")
-     */
+    #[Route('/hello/{name}', methods: ['GET'])]
     public function hello($name): Response
     {
-        return new Response("Hello World! Je suis dans le hello controller. Hello " . $name . "!");
+        return new Response("Je suis dans le hello controller. Hello " . $name . "!");
     }
 }
 

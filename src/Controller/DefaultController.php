@@ -8,10 +8,16 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
-    #[Route('/hello/{name}', methods: ['GET'])]
-    public function index(string $name): Response
+    #[Route('/', methods: ['GET'])]
+    public function index(): Response
     {
-        return new Response("Hello $name!");
+        return new Response('Hello World! Je suis dans le default controller.');
+    }
+
+    #[Route('/simplicity', methods: ['GET'])]
+    public function simple(): Response
+    {
+        return new Response('Simple! Easy! Great!');
     }
 }
 
