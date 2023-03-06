@@ -14,7 +14,11 @@ class CalculController extends AbstractController
     public function calcul($a, $b): Response
     {
         $result = $a + $b;
-        return new Response("Je suis dans le calcul controller. Le résultat de " . $a . " + " . $b . " est " . $result . "!");
+        return $this -> render('calcul/somme.html.twig', [
+            'a' => $a,
+            'b' => $b,
+            'somme' => $result
+        ]);
     }
 
     /**
@@ -23,9 +27,11 @@ class CalculController extends AbstractController
     public function square($a): Response
     {
         $result = $a * $a;
-        return new Response("Je suis dans le calcul controller. " . $a ."² est " . $result . "!");
+        return $this -> render('calcul/squared.html.twig', [
+            'a' => $a,
+            'square' => $result
+        ]);
     }
 }
-
 
 ?>

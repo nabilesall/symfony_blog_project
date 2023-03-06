@@ -9,9 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class HelloController extends AbstractController
 {
     #[Route('/hello/{name}', methods: ['GET'])]
-    public function hello($name): Response
+    public function hello($name)
     {
-        return new Response("Je suis dans le hello controller. Hello " . $name . "!");
+        return $this -> render('hello/name.html.twig', [
+            'name' => $name
+        ]);
     }
 }
 
