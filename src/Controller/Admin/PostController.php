@@ -13,9 +13,7 @@ class PostController extends AbstractController
      */
     public function index()
     {
-        return $this->render('admin/post/index.html.twig', [
-            'controller_name' => 'PostController',
-        ]);
+        return $this->render('admin/post.html.twig');
     }
 }
 

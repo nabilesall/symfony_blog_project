@@ -13,9 +13,7 @@ class CategoryController extends AbstractController
      */
     public function index()
     {
-        return $this->render('admin/category/index.html.twig', [
-            'controller_name' => 'CategoryController',
-        ]);
+        return $this->render('admin/category.html.twig');
     }
 }
 
