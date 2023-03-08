@@ -11,7 +11,7 @@ class DefaultController extends AbstractController
     #[Route('/', methods: ['GET'])]
     public function index(): Response
     {
-        return new Response('Hello World! Je suis dans le default controller.');
+        return $this -> render('home.html.twig');
     }
 
     #[Route('/simplicity', methods: ['GET'])]
