@@ -19,8 +19,14 @@ class PostController extends AbstractController
         $postRepository = $doctrine->getRepository(Post::class);//->getRepository(\App\Entity\Post::class);
         $post = $postRepository->findAll();
 
-        var_dump($post);
+        //var_dump($post);
+
+        $post = new Post();
+
+        $form = $this->createForm(\App\Form\PostType::class, $post);
+
         return $this->render('admin/post/index.html.twig', [
+            'form' => $form->createView(),
             'controller_name' => 'PostController',
         ]);
     }
