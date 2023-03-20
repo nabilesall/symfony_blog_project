@@ -39,15 +39,6 @@ class UserRepository extends ServiceEntityRepository
         }
     }
 
-    public function findWithUserName(string $userName): ?Array
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.UserName = :val')
-            ->setParameter('val', $userName)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
 
 //    /**
 //     * @return Connection[] Returns an array of Connection objects

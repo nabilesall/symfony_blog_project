@@ -11,7 +11,7 @@ use Doctrine\Persistence\ManagerRegistry;
 class PostController extends AbstractController
 {
     /**
-     * @Route("admin/post", name="adimin.post.index")
+     * @Route("admin/post", name="admin.post.index")
      */
     public function index(ManagerRegistry $doctrine): Response
     {

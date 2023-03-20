@@ -30,10 +30,18 @@ class UserController extends AbstractController
 
             var_dump( $userForConnection);
 
-            //$entityManager = $doctrine->getManager();
-            $userForConnectionRepo = $doctrine->getRepository(User::class);
-            $userForConnectionn = $userForConnectionRepo->findWithUserName($userForConnection->getUserName());
-            var_dump($userForConnectionn);
+            $userRepository = $doctrine->getRepository(User::class);
+            $user = $userRepository->findOneBy([
+                'UserName' => $userForConnection->getUserName(),
+                'UserPassword' => $userForConnection->getUserPassword()
+            ]);
+
+            if ($user) {
+                return $this->redirectToRoute('admin.post.index');
+            }
+
+            echo '<br>';
+            
 
             /*return $this->redirectToRoute('connection', [
                 'id' => "ookk"
@@ -65,15 +73,10 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $userForInscription = $form->getData();
 
-            var_dump($userForInscription);
-            /*$entityManager = $doctrine->getManager();
+            $userRepository = $doctrine->getRepository(User::class);
+            $userRepository -> save($userForInscription,true);
 
-            $entityManager->persist($userForInscription);
-            $entityManager->flush();*/
-
-            return $this->redirectToRoute('connection', [
-                'id' => "ookk"
-            ]);
+            return $this->redirectToRoute('connection');
 
             /*return $this->redirectToRoute('post_show', [
                 'id' => $post->getId()
