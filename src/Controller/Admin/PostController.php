@@ -19,14 +19,9 @@ class PostController extends AbstractController
         $postRepository = $doctrine->getRepository(Post::class);//->getRepository(\App\Entity\Post::class);
         $post = $postRepository->findAll();
 
-        //var_dump($post);
-
-        $post = new Post();
-
-        $form = $this->createForm(\App\Form\PostType::class, $post);
+        //var_dump($post);        
 
         return $this->render('admin/post/index.html.twig', [
-            'form' => $form->createView(),
             'controller_name' => 'PostController',
         ]);
     }
@@ -35,9 +30,9 @@ class PostController extends AbstractController
     /**
      * @Route("admin/post/{id}", name="adminpost.show")
      */
-    public function show($id): Response
+    public function show(ManagerRegistry $doctrine, $id): Response
     {
-        $postRepository = $this->getDoctrine()->getRepository(\App\Entity\Post::class);
+        $postRepository = $doctrine->getRepository(\App\Entity\Post::class);
         $post = $postRepository->find($id);
 
         if (!$post) {
@@ -55,12 +50,16 @@ class PostController extends AbstractController
     /**
      * @Route("admin/post/{id}/edit", name="admin.post.edit")
      */
-    public function edit($id): Response
+    public function edit(ManagerRegistry $doctrine, $id): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager = $doctrine->getManager();
         $postRepository= $entityManager ->getRepository(\App\Entity\Post::class);
+        //$post = $postRepository->find($id);
 
-        $post = $postRepository->find($id);
+        $post = new Post();
+        $form = $this->createForm(\App\Form\PostType::class, $post);
+
+        
 
         if (!$post) {
             throw $this->createNotFoundException(
@@ -69,6 +68,7 @@ class PostController extends AbstractController
         }
 
         return $this->render('admin/post/edit.html.twig', [
+            'form' => $form->createView(),
             'post' => $post,
         ]);
     }
@@ -77,7 +77,7 @@ class PostController extends AbstractController
     /**
      * @Route("admin./post/{id}/update", name="admin.post.update")
      */
-    public function update($id): Response
+    /*public function update($id): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
         $postRepository= $entityManager ->getRepository(\App\Entity\Post::class);
@@ -98,7 +98,7 @@ class PostController extends AbstractController
         return $this->render('admin/post/show.html.twig', [
             'post' => $post,
         ]);
-    }
+    }*/
 
 
     /**
