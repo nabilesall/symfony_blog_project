@@ -28,7 +28,7 @@ class UserController extends AbstractController
         if($form->isSubmitted() && $form->isValid()) {
             $userForConnection = $form->getData();
 
-            var_dump( $userForConnection);
+            //var_dump( $userForConnection);
 
             $userRepository = $doctrine->getRepository(User::class);
             $user = $userRepository->findOneBy([
@@ -37,7 +37,17 @@ class UserController extends AbstractController
             ]);
 
             if ($user) {
-                return $this->redirectToRoute('admin.post.index');
+                //return $this->redirectToRoute('admin.post.index');
+                /*return $this->redirectToRoute('admin.post.index',[
+                    'userName' => $user->getUserName(),
+                    '_method' => 'POST' 
+                ]);*/
+                $loggedIn = true;
+                return $this->render('home.html.twig', [
+                    'controller_name' => 'PostController',
+                    'loggedIn' => $loggedIn,
+                    'userName' => $user->getUserName()
+                ]);
             }
 
             echo '<br>';
@@ -86,6 +96,19 @@ class UserController extends AbstractController
         return $this->render('inscription.html.twig', [
             'form' => $form->createView(),
             'controller_name' => 'InscriptionController',
+        ]);
+    }
+
+
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logout(): Response
+    {
+        $loggedIn = false;
+        return $this->render('home.html.twig', [
+            'controller_name' => 'PostController',
+            'loggedIn' => $loggedIn
         ]);
     }
 }

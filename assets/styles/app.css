@@ -3,27 +3,29 @@ body {
 }
 
 /* header */
-nav {
+header nav {
   background-color: #333;
   color: #fff;
   height: 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
-
-nav ul {
+header nav ul {
+  height: 100%;
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-
-nav ul li {
+header nav ul .menu-navigation-droite {
+  display: flex;
+  flex-direction: row;
+}
+header nav ul li {
   margin: 0 10px;
 }
-
-nav ul li a {
+header nav ul li a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
@@ -36,8 +38,9 @@ footer {
   padding: 20px;
   text-align: center;
 }
-
-.container {
+footer .container {
   max-width: 960px;
   margin: 0 auto;
 }
+
+/*# sourceMappingURL=app.css.map */

@@ -1,12 +1,21 @@
 <header>
 
 	<nav>
-		<ul>
-			<li><a href="/">Blog</a></li>
-			<li><a href="admin/post">Liste des Posts</a></li>
-			<li><a href="/admin/category">Liste des Catégories</a></li>
-			<li><a href="/admin/comment">Liste des Commentaires</a></li>
-			<li><a href="/connection">Connexion</a></li>
+		<ul class="menu-navigation">
+			<div class="menu-navigation-gauche">
+				<li><a href="/">Blog</a></li>
+			</div>
+
+			<div class="menu-navigation-droite">
+				<li><a href="admin/post">Liste des Posts</a></li>
+				<li><a href="/admin/category">Liste des Catégories</a></li>
+				<li><a href="/admin/comment">Liste des Commentaires</a></li>
+				{% if loggedIn is defined and loggedIn %}
+					<li><a href="/logout">Déconnexion</a></li>
+				{% else %}
+					<li><a href="/connection">Connexion</a></li>
+				{% endif %}
+			</div>			
 		</ul>
 	</nav>
 
