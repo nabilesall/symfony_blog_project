@@ -1,5 +1,4 @@
-
-<title>Hello ConnectionController!</title>
+{% extends "bases/base.html.twig" %} 
 
 {% block body %}
 	<style>
@@ -21,5 +20,9 @@
 		{{form_widget(form)}}
 		{{form_end(form)}}
 
+	</div>
+	<div>
+	    <a href="/">Accueil</a>
+		<a href="/inscription">S'inscrire</a>
 	</div>
 {% endblock %}

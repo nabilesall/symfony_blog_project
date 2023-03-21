@@ -18,8 +18,7 @@ class PostType extends AbstractType
         $builder
             ->add('id', NumberType::class)
             ->add('title', TextType::class)
-            ->add('content', TextareaType::class)
-            ->add('publishedAt')
+            ->add('content', TextareaType::class)            
             ->add('Publier', SubmitType::class);
     }
 
