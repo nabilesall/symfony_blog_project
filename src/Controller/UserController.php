@@ -24,7 +24,7 @@ class UserController extends AbstractController
         $form = $this->createForm(ConnectionType::class, $userForConnection);
 
         $form->handleRequest($request);
-
+        
         if($form->isSubmitted() && $form->isValid()) {
             $userForConnection = $form->getData();
 
@@ -37,10 +37,10 @@ class UserController extends AbstractController
             ]);
 
             if ($user) {
+                $request->getSession()->set('userName', $user->getUserName());
                 $loggedIn = true;
                 return $this->render('home.html.twig', [
                     'controller_name' => 'PostController',
-                    'loggedIn' => $loggedIn,
                     'userName' => $user->getUserName()
                 ]);
             }
@@ -84,12 +84,10 @@ class UserController extends AbstractController
     /**
      * @Route("/logout", name="logout")
      */
-    public function logout(): Response
+    public function logout(Request $request): Response
     {
-        $loggedIn = false;
+        $request->getSession()->set('userName', null);
         return $this->render('home.html.twig', [
-            'controller_name' => 'PostController',
-            'loggedIn' => $loggedIn
         ]);
     }
 }

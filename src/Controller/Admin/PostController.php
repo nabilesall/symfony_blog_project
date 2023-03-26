@@ -17,13 +17,17 @@ class PostController extends AbstractController
     public function index(Request $request, ManagerRegistry $doctrine): Response
     {//fonctionne
 
-        $postRepository = $doctrine->getRepository(Post::class);//->getRepository(\App\Entity\Post::class);
-        $post = $postRepository->findAll();
+        if($request->getSession()->get('userName')!= null){
+            $postRepository = $doctrine->getRepository(Post::class);//->getRepository(\App\Entity\Post::class);
+            $post = $postRepository->findAll();
 
-        var_dump($post);
-        return $this->render('admin/post/index.html.twig', [
-            'controller_name' => 'PostController'
-        ]);
+            var_dump($post);
+            return $this->render('admin/post/index.html.twig', [
+                'userName' => $request->getSession()->get('userName'),
+            ]);
+        }else{
+            return $this->redirectToRoute('connection');
+        }
     }
 
 
@@ -51,6 +55,7 @@ class PostController extends AbstractController
         return $this->render('admin/post/create.html.twig', [
             'controller_name' => 'PostController',
             'form' => $form->createView(),
+            'userName' => $request->getSession()->get('userName'),
         ]);
     }
 
@@ -70,6 +75,7 @@ class PostController extends AbstractController
 
         return $this->render('admin/post/show.html.twig', [
             'post' => $post->getTitle(),
+            'userName' => $request->getSession()->get('userName'),
         ]);
     }
 
@@ -110,6 +116,7 @@ class PostController extends AbstractController
         return $this->render('admin/post/edit.html.twig', [
             'post' => $post,
             'form' => $form->createView(),
+            'userName' => $request->getSession()->get('userName'),
         ]);
     }
 
