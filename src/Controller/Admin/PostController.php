@@ -15,7 +15,7 @@ class PostController extends AbstractController
      * @Route("admin/post", name="admin.post.index")
      */
     public function index(Request $request, ManagerRegistry $doctrine): Response
-    {
+    {//fonctionne
 
         $postRepository = $doctrine->getRepository(Post::class);//->getRepository(\App\Entity\Post::class);
         $post = $postRepository->findAll();
@@ -27,12 +27,11 @@ class PostController extends AbstractController
     }
 
 
-
     /**
-     * @Route("admin/create", name="admin.create")
+     * @Route("admin/post/create", name="admin.post.create")
      */
     public function create(Request $request, ManagerRegistry $doctrine): Response
-    {
+    {//fonctionne
         $post = new Post();
         $form = $this->createForm(\App\Form\PostType::class, $post);
 
@@ -56,10 +55,10 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("admin/post/{id}", name="adminpost.show")
+     * @Route("admin/post/{id}", name="admin.post.show")
      */
     public function show(ManagerRegistry $doctrine, $id): Response
-    {
+    {//fonctionne
         $postRepository = $doctrine->getRepository(\App\Entity\Post::class);
         $post = $postRepository->find($id);
 
@@ -70,7 +69,7 @@ class PostController extends AbstractController
         }
 
         return $this->render('admin/post/show.html.twig', [
-            'post' => $post,
+            'post' => $post->getTitle(),
         ]);
     }
 
@@ -78,15 +77,28 @@ class PostController extends AbstractController
     /**
      * @Route("admin/post/{id}/edit", name="admin.post.edit")
      */
-    public function edit(ManagerRegistry $doctrine, $id): Response
-    {
+    public function edit(Request $request, ManagerRegistry $doctrine, $id): Response
+    {//fonctionne
         $entityManager = $doctrine->getManager();
         $postRepository= $entityManager ->getRepository(\App\Entity\Post::class);
-        //$post = $postRepository->find($id);
+        $post = $postRepository->find($id);
 
-        $post = new Post();
         $form = $this->createForm(\App\Form\PostType::class, $post);
+        $form->handleRequest($request);
 
+        if($form->isSubmitted() && $form->isValid()) {
+            $post = $form->getData();
+
+            $post ->setTitle($post->getTitle());
+            $post ->setContent($post->getContent());
+            $postRepository = $doctrine->getRepository(Post::class);
+
+            $entityManager->flush();
+
+            return $this->redirectToRoute('admin.post.index', [
+                'id' => $post->getId()
+            ]);
+        }
         
 
         if (!$post) {
@@ -96,37 +108,10 @@ class PostController extends AbstractController
         }
 
         return $this->render('admin/post/edit.html.twig', [
-            'form' => $form->createView(),
             'post' => $post,
+            'form' => $form->createView(),
         ]);
     }
-
-
-    /**
-     * @Route("admin./post/{id}/update", name="admin.post.update")
-     */
-    /*public function update($id): Response
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-        $postRepository= $entityManager ->getRepository(\App\Entity\Post::class);
-
-        $post = $postRepository->find($id);
-
-        if (!$post) {
-            throw $this->createNotFoundException(
-                'No product found for id '.$id
-            );
-        }
-
-        $post->setTitle('Hi World');
-        $post->setContent('Mon contenu a été modifié');
-
-        $entityManager->flush();
-
-        return $this->render('admin/post/show.html.twig', [
-            'post' => $post,
-        ]);
-    }*/
 
 
     /**
