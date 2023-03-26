@@ -7,13 +7,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Request;
 
 class PostController extends AbstractController
 {
     /**
      * @Route("admin/post", name="admin.post.index")
      */
-    public function index(ManagerRegistry $doctrine): Response
+    public function index(Request $request, ManagerRegistry $doctrine): Response
     {
 
         $postRepository = $doctrine->getRepository(Post::class);//->getRepository(\App\Entity\Post::class);
@@ -22,7 +23,18 @@ class PostController extends AbstractController
         $post = new Post();
         $form = $this->createForm(\App\Form\PostType::class, $post);
 
-        //var_dump($post);        
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $post = $form->getData();
+
+            $postRepository = $doctrine->getRepository(Post::class);
+            $postRepository->save($post,true);
+
+            return $this->redirectToRoute('admin.post.index', [
+                'id' => $post->getId()
+            ]);
+        }
 
         return $this->render('admin/post/index.html.twig', [
             'controller_name' => 'PostController',

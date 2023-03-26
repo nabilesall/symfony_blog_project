@@ -37,11 +37,6 @@ class UserController extends AbstractController
             ]);
 
             if ($user) {
-                //return $this->redirectToRoute('admin.post.index');
-                /*return $this->redirectToRoute('admin.post.index',[
-                    'userName' => $user->getUserName(),
-                    '_method' => 'POST' 
-                ]);*/
                 $loggedIn = true;
                 return $this->render('home.html.twig', [
                     'controller_name' => 'PostController',
@@ -88,9 +83,6 @@ class UserController extends AbstractController
 
             return $this->redirectToRoute('connection');
 
-            /*return $this->redirectToRoute('post_show', [
-                'id' => $post->getId()
-            ]);*/
         }
 
         return $this->render('inscription.html.twig', [
