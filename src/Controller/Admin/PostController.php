@@ -20,6 +20,19 @@ class PostController extends AbstractController
         $postRepository = $doctrine->getRepository(Post::class);//->getRepository(\App\Entity\Post::class);
         $post = $postRepository->findAll();
 
+        var_dump($post);
+        return $this->render('admin/post/index.html.twig', [
+            'controller_name' => 'PostController'
+        ]);
+    }
+
+
+
+    /**
+     * @Route("admin/create", name="admin.create")
+     */
+    public function create(Request $request, ManagerRegistry $doctrine): Response
+    {
         $post = new Post();
         $form = $this->createForm(\App\Form\PostType::class, $post);
 
@@ -36,12 +49,11 @@ class PostController extends AbstractController
             ]);
         }
 
-        return $this->render('admin/post/index.html.twig', [
+        return $this->render('admin/post/create.html.twig', [
             'controller_name' => 'PostController',
             'form' => $form->createView(),
         ]);
     }
-
 
     /**
      * @Route("admin/post/{id}", name="adminpost.show")

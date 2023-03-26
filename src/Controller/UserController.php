@@ -44,17 +44,6 @@ class UserController extends AbstractController
                     'userName' => $user->getUserName()
                 ]);
             }
-
-            echo '<br>';
-            
-
-            /*return $this->redirectToRoute('connection', [
-                'id' => "ookk"
-            ]);*/
-
-            /*return $this->redirectToRoute('post_show', [
-                'id' => $post->getId()
-            ]);*/
         }
 
         return $this->render('connection.html.twig', [
