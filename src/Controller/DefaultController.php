@@ -10,6 +10,9 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends AbstractController
 {
     #[Route('/', methods: ['GET'])]
+    /**
+     * @Route("/", name="home")
+     */
     public function index(Request $request): Response
     {
         return $this -> render('home.html.twig',[

@@ -38,11 +38,11 @@ class UserController extends AbstractController
 
             if ($user) {
                 $request->getSession()->set('userName', $user->getUserName());
-                $loggedIn = true;
-                return $this->render('home.html.twig', [
+                return $this->redirectToRoute('home');
+                /*return $this->render('home.html.twig', [
                     'controller_name' => 'PostController',
                     'userName' => $user->getUserName()
-                ]);
+                ]);*/
             }
         }
 
