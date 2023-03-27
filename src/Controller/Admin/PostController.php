@@ -125,12 +125,11 @@ class PostController extends AbstractController
      * @Route("admin/post/{id}/remove", name="admin.post.remove")
      */
 
-    public function remove($id): Response
+    public function remove(Request $request, ManagerRegistry $doctrine, $id): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
-        $postRepository= $entityManager ->getRepository(\App\Entity\Post::class);
+        $postRepository= $doctrine ->getRepository(\App\Entity\Post::class);
 
-        $post = $postRepository->find($id);
+        $post = $postRepository->findOneBy(['id' => $id]);
 
         if (!$post) {
             throw $this->createNotFoundException(
@@ -138,8 +137,7 @@ class PostController extends AbstractController
             );
         }
 
-        $entityManager->remove($post);
-        $entityManager->flush();
+        $entityManager->remove($post,true);
 
         return $this->redirectToRoute('admin.post.index');
     }

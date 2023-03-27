@@ -16,9 +16,15 @@
 
 	<div class="example-wrapper">
 
-		{{form_start(form)}}
-		{{form_widget(form)}}
-		{{form_end(form)}}
+		{{ form_start(form) }}
+			{{form_errors(form)}}
+
+			{{form_row(form.UserName)}}
+			{{form_row(form.UserPassword)}}
+
+			{{form_widget(form.connection)}}
+	
+		{{ form_end(form) }}
 
 	</div>
 	<div>
