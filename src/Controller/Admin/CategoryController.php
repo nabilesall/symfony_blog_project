@@ -24,8 +24,15 @@ class CategoryController extends AbstractController
             $categoryRepository = $doctrine->getRepository(\App\Entity\Category::class);
             $category = $categoryRepository->findAll();
 
+            for($i=0; $i < count($category); $i++){
+                $category[$i] = array(
+                    "id" => $category[$i]->getId(),
+                    "name" => $category[$i]->getName(),
+                );
+            }
+
             var_dump($category);
-            return $this->render('admin/category.html.twig', [
+            return $this->render('admin/category/index.html.twig', [
                 'userName' => $request->getSession()->get('userName'),
             ]);
         }

@@ -21,11 +21,11 @@ class PostController extends AbstractController
         //on vérifie que l'utilisateur est connecté
         if($request->getSession()->get('userName')!= null){
             //on récupère les posts
-            $postRepository = $doctrine->getRepository(Post::class);//->getRepository(\App\Entity\Post::class);
+            $postRepository = $doctrine->getRepository(Post::class);
             $post = $postRepository->findAll();        
 
             //on transforme les objets en tableau pour pouvoir les afficher dans twig avec un for
-            for($i=0; $i < count((array)$post); $i++){
+            for($i=0; $i < count($post); $i++){
                 $post[$i] = array(
                     "id" => $post[$i]->getId(),
                     "content" => $post[$i]->getContent(),
