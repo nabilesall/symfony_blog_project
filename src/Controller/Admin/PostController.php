@@ -47,7 +47,7 @@ class PostController extends AbstractController
             $postRepository = $doctrine->getRepository(Post::class);
             $postRepository->save($post,true);
 
-            return $this->redirectToRoute('admin.post.index', [
+            return $this->redirectToRoute('admin.post.show', [
                 'id' => $post->getId()
             ]);
         }
@@ -101,7 +101,7 @@ class PostController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('admin.post.index', [
+            return $this->redirectToRoute('admin.post.show', [
                 'id' => $post->getId()
             ]);
         }

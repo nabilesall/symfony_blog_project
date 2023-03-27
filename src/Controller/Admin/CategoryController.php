@@ -51,7 +51,7 @@ class CategoryController extends AbstractController
             $categoryRepository = $doctrine->getRepository(Category::class);
             $categoryRepository->save($category,true);
 
-            return $this->redirectToRoute('admin.category.index', [
+            return $this->redirectToRoute('admin.category.show', [
                 'id' => $category->getId()
             ]);
         }
@@ -103,8 +103,8 @@ class CategoryController extends AbstractController
             $categoryRepository = $doctrine->getRepository(Category::class);
             $categoryRepository->save($category,true);
 
-            return $this->redirectToRoute('admin.category.index', [
-                'id' => $category->getId()
+            return $this->redirectToRoute('admin.category.show', [
+                'id' => $category->getId(),
             ]);
         }
 
