@@ -18,24 +18,30 @@ class CommentController extends AbstractController
      */
     public function index(ManagerRegistry $doctrine, Request $request)
     {
-        $commentRepository = $doctrine->getRepository(Comment::class);
-        $comments = $commentRepository->findAll();
+        //on vérifie que l'utilisateur est connecté
+        if($request->getSession()->get('userName')!= null){
+            $commentRepository = $doctrine->getRepository(Comment::class);
+            $comments = $commentRepository->findAll();
 
-        //on transforme les objets en tableau pour pouvoir les afficher dans twig avec un for
-        for ($i=0; $i < count($comments); $i++) { 
-            $comments[$i] = array(
-                "id" => $comments[$i]->getId(),
-                "content" => $comments[$i]->getContent(),
-                "publishedAt" => $comments[$i]->getCreatedAt(),
-                "userName" => $comments[$i]->getUserName()
-            );
+            //on transforme les objets en tableau pour pouvoir les afficher dans twig avec un for
+            for ($i=0; $i < count($comments); $i++) { 
+                $comments[$i] = array(
+                    "id" => $comments[$i]->getId(),
+                    "content" => $comments[$i]->getContent(),
+                    "publishedAt" => $comments[$i]->getCreatedAt(),
+                    "userName" => $comments[$i]->getUserName()
+                );
+            }
+
+            var_dump($comments);
+            return $this->render('admin/comment/index.html.twig', [
+                'comments' => $comments,
+                'userName' => $request->getSession()->get('userName'),
+            ]);
+        }else{
+            //si l'utilisateur n'est pas connecté, on le redirige vers la page de connexion
+            return $this->redirectToRoute('connection');
         }
-
-        var_dump($comments);
-        return $this->render('admin/comment/index.html.twig', [
-            'comments' => $comments,
-            'userName' => $request->getSession()->get('userName'),
-        ]);
     }
 }
 
