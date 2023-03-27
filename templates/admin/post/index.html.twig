@@ -14,13 +14,97 @@
 			background: #F5F5F5;
 			padding: 2px 6px;
 		}
+
+		.post-index-html {
+			display: flex;
+			justify-content: center;
+		}
+
+		.posts {
+			display: flex;
+			width: 60%;
+			flex-direction: column;
+		}
+
+		.post-header {
+			display: flex;
+			justify-content: space-between;
+		}
+		.date-publication {
+			font-size: 0.8em;
+			color: #aaa;
+			margin: 0;
+    		align-self: center;
+		}
+
+		.single-post {
+			margin-bottom: 1em;
+			border: 2px solid #eee;
+			border-radius: 20px;
+			padding: 10px;
+			padding-bottom: 20px;
+		}
+
+		.single-post .post-content{
+			text-align: justify;
+		}
+
+		.single-post a {
+			text-decoration: none;
+			color: #000;
+			font-weight: bold;
+
+			border: 1px solid;
+			padding: 10px;
+			border-radius: 10px;
+		}
+
+		.separator {
+			width: 100%;
+			height: 1px;
+			background-color: #eee;
+		}
 	</style>
 
-	<title>Hello PostController!</title>
+	<title>Posts</title>
 
-	<div class="example-wrapper">
-		<h1>Hello
-		</h1>
-	</div>
+	<main class="post-index-html">
+		<div class="posts">
+			<div class="example-wrapper">
+				<h3>posts</h3>
+			</div>
 
+			{% for post in posts %}
+				<div class="single-post">
+					<div class="post-header">
+						<h2>{{ post.title }}</h2>
+						<p class="date-publication">le {{ post.publishedAt|date('d/m/Y') }}</p>
+					</div>
+					<div class="separator"></div>
+					<p class="post-content">{{ post.content }}</p>
+					<a href="/admin/post/{{ post.id }}">Lire la suite</a>
+				</div>
+			{% endfor %}
+
+			<div class="single-post">
+				<div class="post-header">
+					<h2>Titre 1</h2>
+					<p class="date-publication">le 12/12/2020</p>
+				</div>
+				<div class="separator"></div>
+				<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique repellat optio vel, nemo minus maxime esse perferendis, nesciunt unde consequuntur, quia ea laudantium eum dolore officia cupiditate eos quos architecto</p>
+				<a href="/admin/post/2">Lire la suite</a>
+			</div>
+
+			<div class="single-post">
+				<div class="post-header">
+					<h2>Titre 1</h2>
+					<p class="date-publication">le 12/12/2020</p>
+				</div>
+				<div class="separator"></div>
+				<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique repellat optio vel, nemo minus maxime esse perferendis, nesciunt unde consequuntur, quia ea laudantium eum dolore officia cupiditate eos quos architecto</p>
+				<a href="/admin/post/2">Lire la suite</a>
+			</div>
+		</div>
+	</main>
 {% endblock %}

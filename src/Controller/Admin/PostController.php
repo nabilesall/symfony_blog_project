@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Utils\Text;
 use App\Entity\Post;
 use App\Entity\Comment;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,16 +29,17 @@ class PostController extends AbstractController
             for($i=0; $i < count($post); $i++){
                 $post[$i] = array(
                     "id" => $post[$i]->getId(),
-                    "content" => $post[$i]->getContent(),
+                    "content" => Text::excerpt($post[$i]->getContent()),
                     "publishedAt" => $post[$i]->getPublishedAt(),
                     "title" => $post[$i]->getTitle(),
                 );
             }
 
-            var_dump($post);
+            //var_dump($post);
 
             //on affiche la page
             return $this->render('admin/post/index.html.twig', [
+                'posts' => $post,
                 'userName' => $request->getSession()->get('userName'),
             ]);
         }else{
