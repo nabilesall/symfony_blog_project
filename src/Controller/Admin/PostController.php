@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\FormError;
 
 class PostController extends AbstractController
 {
@@ -117,6 +118,16 @@ class PostController extends AbstractController
             if($form->isSubmitted() && $form->isValid()) {
 
                 $comment = $form->getData();
+                if($comment->getContent() == null){//erreur
+                    $form->addError(new FormError('Le commentaire ne peut pas être vide'));                                     
+                    return $this->render('admin/post/show.html.twig', [
+                        'post' => $post,
+                        'comments' => $comments,
+                        'form' => $form->createView(),
+                        'userName' => $request->getSession()->get('userName'),
+                    ]);
+                }
+
                 $comment->setPost($post->getId());
                 $comment->setUserName($request->getSession()->get('userName'));
 
@@ -126,6 +137,7 @@ class PostController extends AbstractController
                 return $this->redirectToRoute('admin.post.show', [
                     'id' => $post->getId()
                 ]);
+                
             }
 
             $postInArray = array(
