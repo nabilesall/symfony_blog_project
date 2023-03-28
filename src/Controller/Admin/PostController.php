@@ -104,10 +104,8 @@ class PostController extends AbstractController
         
         var_dump($comments);
 
-        if (!$post) {
-            throw $this->createNotFoundException(
-                'No product found for id '.$id
-            );
+        if($post == null){
+            return $this->redirectToRoute('admin.post.index');
         }else{
 
             //formulaire de commentaire
@@ -174,10 +172,8 @@ class PostController extends AbstractController
         }
         
 
-        if (!$post) {
-            throw $this->createNotFoundException(
-                'No product found for id '.$id
-            );
+        if($post == null){
+            return $this->redirectToRoute('admin.post.index');
         }
 
         return $this->render('admin/post/edit.html.twig', [
@@ -198,10 +194,8 @@ class PostController extends AbstractController
 
         $post = $postRepository->findOneBy(['id' => $id]);
 
-        if (!$post) {
-            throw $this->createNotFoundException(
-                'No product found for id '.$id
-            );
+        if($post == null){
+            return $this->redirectToRoute('admin.post.index');
         }
 
         $entityManager->remove($post,true);
