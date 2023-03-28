@@ -1,13 +1,12 @@
 {% extends "bases/base.html.twig" %}
 
-
-
 {% block body %}
 	<style>
 
-		.post-index-html {
+		.admin-post-index-html {
 			display: flex;
 			justify-content: center;
+			align-items: center;
 		}
 
 		.header-posts {
@@ -50,6 +49,8 @@
 			border-radius: 20px;
 			padding: 10px;
 			padding-bottom: 20px;
+			box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+
 		}
 
 		.single-post .post-content{
@@ -60,10 +61,15 @@
 			text-decoration: none;
 			color: #000;
 			font-weight: bold;
-
+			transition: all 0.3s ease;
 			border: 1px solid;
 			padding: 10px;
 			border-radius: 10px;
+		}
+
+		.single-post a:hover, .header-posts a:hover {
+			background-color: #000;
+			color: #fff;
 		}
 
 		.separator {
@@ -75,7 +81,7 @@
 
 	<title>Posts</title>
 
-	<main class="post-index-html">
+	<main class="admin-post-index-html">
 		<div class="posts">
 			<div class="header-posts">
 				<h3>posts</h3>

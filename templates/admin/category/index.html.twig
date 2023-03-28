@@ -3,7 +3,7 @@
 {% block body %}
 	<style>
 
-		.category-index-html{
+		.admin-category-index-html{
 			display: flex;
 			justify-content: center;
 		}
@@ -38,22 +38,28 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
+			box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
 		}
 
 		.single-category a, .header-categories a {
 			text-decoration: none;
 			color: #000;
 			font-weight: bold;
-
+			transition: all 0.3s ease;
 			border: 1px solid;
 			padding: 10px;
 			border-radius: 10px;
+		}
+
+		.single-category a:hover, .header-categories a:hover {
+			background-color: #000;
+			color: #fff;
 		}
 	</style>
 
 	<title>Category</title>
 
-	<main class="category-index-html">
+	<main class="admin-category-index-html">
 		<div class="categories">
 			<div class="header-categories">
 				<h3>category</h3>
