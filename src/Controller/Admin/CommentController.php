@@ -29,11 +29,11 @@ class CommentController extends AbstractController
                     "id" => $comments[$i]->getId(),
                     "content" => $comments[$i]->getContent(),
                     "publishedAt" => $comments[$i]->getCreatedAt(),
-                    "userName" => $comments[$i]->getUserName()
+                    "userName" => $comments[$i]->getUserName(),
+                    "postId" => $comments[$i]->getPost(),
                 );
             }
-
-            var_dump($comments);
+            
             return $this->render('admin/comment/index.html.twig', [
                 'comments' => $comments,
                 'userName' => $request->getSession()->get('userName'),
@@ -42,6 +42,24 @@ class CommentController extends AbstractController
             //si l'utilisateur n'est pas connecté, on le redirige vers la page de connexion
             return $this->redirectToRoute('connection');
         }
+    }
+
+
+    /**
+     * @Route("/admin/comment/{id}/remove", name="admin.comment.remove")
+     */
+    public function remove(ManagerRegistry $doctrine, Request $request, $id)
+    {
+        $commentRepository = $doctrine->getRepository(Comment::class);
+        $comment = $commentRepository->findOneBy(['id' => $id]);
+
+        if($comment == null){
+            return $this->redirectToRoute('admin.comment.index');
+        }
+
+        $commentRepository->remove($comment,true);
+
+        return $this->redirectToRoute('admin.comment.index');
     }
 }
 
