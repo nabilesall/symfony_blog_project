@@ -30,9 +30,9 @@ class CategoryController extends AbstractController
                     "name" => $category[$i]->getName(),
                 );
             }
-
-            var_dump($category);
+            
             return $this->render('admin/category/index.html.twig', [
+                'categories' => $category,
                 'userName' => $request->getSession()->get('userName'),
             ]);
         }
