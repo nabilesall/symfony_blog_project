@@ -30,9 +30,9 @@ class CategoryController extends AbstractController
                     "name" => $category[$i]->getName(),
                 );
             }
-
-            var_dump($category);
+            
             return $this->render('admin/category/index.html.twig', [
+                'categories' => $category,
                 'userName' => $request->getSession()->get('userName'),
             ]);
         }
@@ -80,9 +80,15 @@ class CategoryController extends AbstractController
             $categoryRepository = $doctrine->getRepository(\App\Entity\Category::class);
             $category = $categoryRepository->find($id);
 
-            var_dump($category);
+            
+
+            $categoryInArray = array(
+                "id" => $category->getId(),
+                "name" => $category->getName(),
+            );
+
             return $this->render('admin/category/show.html.twig', [
-                'category' => $category->getName(),
+                'category' => $categoryInArray,
                 'userName' => $request->getSession()->get('userName'),
             ]);
         }

@@ -2,23 +2,77 @@
 
 {% block body %}
 	<style>
-		.example-wrapper {
-			margin: 1em auto;
-			max-width: 800px;
-			width: 95%;
-			font: 18px / 1.5 sans-serif;
+
+		.admin-category-index-html{
+			display: flex;
+			justify-content: center;
 		}
-		.example-wrapper code {
-			background: #F5F5F5;
-			padding: 2px 6px;
+
+		.header-categories {
+			width: 100%;
+			font: 18px / 1.5 sans-serif;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 20px 0;
+		}
+
+		.header-categories h3, .single-category h3 {
+			margin: 0;
+			padding: 0;
+			font-size: 1.5em;
+			font-weight: bold;
+		}
+	
+		.categories {
+			display: flex;
+			flex-direction: column;
+			width: 60%;
+		}
+
+		.single-category{
+			margin-bottom: 20px;
+			border: 2px solid #eee;
+			border-radius: 20px;
+			padding: 10px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+		}
+
+		.single-category a, .header-categories a {
+			text-decoration: none;
+			color: #000;
+			font-weight: bold;
+			transition: all 0.3s ease;
+			border: 1px solid;
+			padding: 10px;
+			border-radius: 10px;
+		}
+
+		.single-category a:hover, .header-categories a:hover {
+			background-color: #000;
+			color: #fff;
 		}
 	</style>
 
-	<title>Hello PostController!</title>
+	<title>Category</title>
 
-	<div class="example-wrapper">
-		<h1>Hello {{userName}}! category
-		</h1>
-	</div>
+	<main class="admin-category-index-html">
+		<div class="categories">
+			<div class="header-categories">
+				<h3>category</h3>
+				<a href="/admin/category/create">Créer une nouvelle catégorie</a>
+			</div>
 
+			{% for category in categories %}
+				<div class="single-category">
+					<h3>{{category.name}}</h3>
+					<a href="/admin/category/{{category.id}}">Voir la catégorie</a>
+				</div>
+			{% endfor %}
+
+		</div>
+	</main>
 {% endblock %}
