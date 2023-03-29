@@ -7,8 +7,8 @@
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
-			padding: 20px;
-			height: 65vh;
+			padding: 60px;
+			height: 55vh;
 		}
 
 		.connection-form{
@@ -20,7 +20,16 @@
 			box-shadow: 0 0 10px rgba(0,0,0,.3);
 		}
 
+		.connection-form h3{
+			font-size: 20px;
+			font-weight: bold;
+			margin-bottom: 10px;
+			border-bottom: 1px solid #ccc;
+			padding-bottom: 15px;
+		}
+
 		form{
+			padding: 20px;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -28,15 +37,17 @@
 		}
 
 		.form-control{
-			width: 40%;
+			box-sizing: border-box;
+			width: 60%;
 			padding: 10px;
 			border: 1px solid #ccc;
 			border-radius: 5px;
 			box-shadow: 0 0 10px rgba(0,0,0,.5);
+			outline: none;
 		}
 
 		.btn-connecter{
-			width: 40%;
+			width: 60%;
 			padding: 10px;
 			border: 1px solid #ccc;
 			border-radius: 5px;
@@ -71,7 +82,7 @@
 			{{ form_start(form) }}
 				{{form_errors(form)}}
 
-				{{form_widget(form.UserName, {'attr': {'placeholder': 'Nom d\'utilisateur', 'class': 'form-control'}})}}
+				{{form_widget(form.UserName, {'attr': {'placeholder': 'Nom d\'utilisateur', 'class': 'form-control', 'autocomplete': 'off'}})}}
 				{{form_widget(form.UserPassword, {'attr': {'placeholder': 'Mot de passe', 'class': 'form-control'}})}}
 
 				{{form_widget(form.connection, {'label': 'Se connecter', 'attr': {'class': 'btn btn-connecter'}})}}
