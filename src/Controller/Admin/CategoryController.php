@@ -80,8 +80,6 @@ class CategoryController extends AbstractController
             $categoryRepository = $doctrine->getRepository(\App\Entity\Category::class);
             $category = $categoryRepository->find($id);
 
-            
-
             $categoryInArray = array(
                 "id" => $category->getId(),
                 "name" => $category->getName(),
