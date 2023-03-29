@@ -7,8 +7,8 @@
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
-			padding: 20px;
-			height: 65vh;
+			padding: 60px;
+			height: 55vh;
 		}
 
 		.inscription-form{
@@ -20,7 +20,16 @@
 			box-shadow: 0 0 10px rgba(0,0,0,0.3);
 		}
 
+		.inscription-form h3{
+			font-size: 20px;
+			font-weight: bold;
+			margin-bottom: 10px;
+			border-bottom: 1px solid #ccc;
+			padding-bottom: 15px;
+		}
+
 		form{
+			padding: 20px;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -28,7 +37,8 @@
 		}
 
 		.form-control{
-			width: 40%;
+			box-sizing: border-box;
+			width: 60%;
 			padding: 10px;
 			border: 1px solid #ccc;
 			border-radius: 5px;
@@ -37,7 +47,7 @@
 		}
 
 		.btn-inscrire{
-			width: 40%;
+			width: 60%;
 			padding: 10px;
 			border: 1px solid #ccc;
 			border-radius: 5px;
@@ -72,8 +82,8 @@
 
 			{{ form_start(form) }}
 
-				{{ form_widget(form.UserName, {'attr': {'class': 'form-control', 'placeholder': 'Nom d\'utilisateur'}}) }}
-				{{ form_widget(form.UserMail, {'attr': {'class': 'form-control', 'placeholder': 'Email'}}) }}
+				{{ form_widget(form.UserName, {'attr': {'class': 'form-control', 'placeholder': 'Nom d\'utilisateur','autocomplete':'off'}}) }}
+				{{ form_widget(form.UserMail, {'attr': {'class': 'form-control', 'placeholder': 'Email','autocomplete':'off'}}) }}
 				{{ form_widget(form.UserPassword, {'attr': {'class': 'form-control', 'placeholder': 'Mot de passe'}}) }}
 				
 				{{ form_widget(form.createAccount, {'label' : 'Créer un compte', 'attr' : {'class' : 'btn-inscrire'}}) }}
@@ -82,7 +92,7 @@
 		</div>
 
 		<div class="inscription-form-footer">
-			<p>Vous avez déjà un compte ? <a href="{{ path('connection') }}">Connectez-vous</a></p>
+			<span>Vous avez déjà un compte ?</span> <a href="{{ path('connection') }}">Connectez-vous</a>
 		</div>
 
 	</main>

@@ -80,8 +80,7 @@ class UserController extends AbstractController
     public function logout(Request $request): Response
     {
         $request->getSession()->set('userName', null);
-        return $this->render('home.html.twig', [
-        ]);
+        return $this->redirectToRoute('connection');
     }
 }
 
