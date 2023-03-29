@@ -16,18 +16,10 @@ class InscriptionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('UserName', TextType::class, [
-                'label' => 'Nom d\'utilisateur',
-            ])
-            ->add('UserMail', EmailType::class, [
-                'label' => 'Adresse mail',
-            ])
-            ->add('UserPassword', PasswordType::class, [
-                'label' => 'Mot de passe',
-            ])
-            ->add("createAccount", SubmitType::class, [
-                'label' => 'Créer un compte',
-            ])
+            ->add('UserName', TextType::class)
+            ->add('UserMail', EmailType::class)
+            ->add('UserPassword', PasswordType::class)
+            ->add("createAccount", SubmitType::class)
         ;
     }
 

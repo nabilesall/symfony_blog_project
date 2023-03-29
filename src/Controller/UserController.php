@@ -27,9 +27,7 @@ class UserController extends AbstractController
         
         if($form->isSubmitted() && $form->isValid()) {
             $userForConnection = $form->getData();
-
-            //var_dump( $userForConnection);
-
+            
             $userRepository = $doctrine->getRepository(User::class);
             $user = $userRepository->findOneBy([
                 'UserName' => $userForConnection->getUserName(),
@@ -38,11 +36,7 @@ class UserController extends AbstractController
 
             if ($user) {
                 $request->getSession()->set('userName', $user->getUserName());
-                return $this->redirectToRoute('home');
-                /*return $this->render('home.html.twig', [
-                    'controller_name' => 'PostController',
-                    'userName' => $user->getUserName()
-                ]);*/
+                return $this->redirectToRoute('home');                
             }
         }
 
@@ -71,7 +65,6 @@ class UserController extends AbstractController
             $userRepository -> save($userForInscription,true);
 
             return $this->redirectToRoute('connection');
-
         }
 
         return $this->render('inscription.html.twig', [
