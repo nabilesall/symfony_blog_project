@@ -2,33 +2,86 @@
 
 {% block body %}
 	<style>
-		.example-wrapper {
-			margin: 1em auto;
-			max-width: 800px;
-			width: 95%;
-			font: 18px / 1.5 sans-serif;
+		.connection-form-html{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 20px;
 		}
-		.example-wrapper code {
-			background: #F5F5F5;
-			padding: 2px 6px;
+
+		.connection-form{
+			width: 50%;
+			padding: 20px;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0,0,0,.3);
+		}
+
+		form{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 20px;
+		}
+
+		.form-control{
+			width: 40%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0,0,0,.5);
+		}
+
+		.btn-connecter{
+			width: 40%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0,0,0,.5);
+			background-color: #000;
+			color: #fff;
+			font-weight: bold;
+			cursor: pointer;
+		}
+
+		.btn-connecter:hover{
+			background-color: #fff;
+			color: #000;
+		}
+
+		.connection-form-footer{
+			margin-top: 20px;
+		}
+
+		.connection-form-footer a{
+			color: #007bff;
+			text-decoration: none;
 		}
 	</style>
 
-	<div class="example-wrapper">
+	<title>Connexion</title>
 
-		{{ form_start(form) }}
-			{{form_errors(form)}}
+	<main class="connection-form-html">
+		<div class="connection-form">
+			<h3>Connexion</h3>
 
-			{{form_row(form.UserName)}}
-			{{form_row(form.UserPassword)}}
+			{{ form_start(form) }}
+				{{form_errors(form)}}
 
-			{{form_widget(form.connection)}}
+				{{form_widget(form.UserName, {'attr': {'placeholder': 'Nom d\'utilisateur', 'class': 'form-control'}})}}
+				{{form_widget(form.UserPassword, {'attr': {'placeholder': 'Mot de passe', 'class': 'form-control'}})}}
+
+				{{form_widget(form.connection, {'label': 'Se connecter', 'attr': {'class': 'btn btn-connecter'}})}}
+		
+			{{ form_end(form) }}
+		</div>
+
+		<div class="connection-form-footer">
+			<span>Vous n'avez pas de compte ?</span>
+			<a href="{{path('inscription')}}">Inscrivez-vous</a>
+		</div>
+
+	</main>
 	
-		{{ form_end(form) }}
-
-	</div>
-	<div>
-	    <a href="/">Accueil</a>
-		<a href="/inscription">S'inscrire</a>
-	</div>
 {% endblock %}
