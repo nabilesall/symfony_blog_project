@@ -2,29 +2,65 @@
 
 {% block body %}
 	<style>
-		.example-wrapper {
-			margin: 1em auto;
-			max-width: 800px;
-			width: 95%;
-			font: 18px / 1.5 sans-serif;
+		.admin-category-create-html{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 60px;
 		}
-		.example-wrapper code {
-			background: #F5F5F5;
-			padding: 2px 6px;
+
+		.creer-categorie{
+			width: 60%;
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0,0,0,0.2);
+		}
+
+		.creer-categorie h3{
+			font-size: 20px;
+			font-weight: bold;
+			margin-bottom: 10px;
+			border-bottom: 1px solid #ccc;
+			padding-bottom: 15px;
+		}
+
+		.category-name{
+			box-sizing: border-box;
+			width: 100%;
+			height: 40px;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			margin-bottom: 10px;
+			outline: none;
+		}
+
+		.btn-publish{
+			width : 100%;
+			height : 40px;
+			background-color : #000;
+			color : #fff;
+			border : none;
+			border-radius : 5px;
+			cursor : pointer;
 		}
 	</style>
 
-	<title>Hello PostController!</title>
+	<title>Category - Créer</title>
 
-	<div class="example-wrapper">
-		<h1>Hello
-			{{ controller_name }}! ✅
-		</h1>
-	</div>
+	<main class="admin-category-create-html">
+		<div class="creer-categorie">
+			<h3>Créer une nouvelle catégorie</h3>
 
-	<div class="example-wrapper">
+			{{ form_start(form) }}
+				
+				{{form_widget(form.name,{'attr' : {'placeholder' : 'Le nom de la catégorie', 'class' : 'category-name', 'autocomplete':'off'}})}}
+				{{form_widget(form.publish,{'label' : 'Publier la catégorie', 'attr': {'class' : 'btn-publish'}})}}
+				
+			{{ form_end(form) }}
 
-		{{form(form)}}
+		</div>
 
-	</div>
+	</main>
 {% endblock %}
