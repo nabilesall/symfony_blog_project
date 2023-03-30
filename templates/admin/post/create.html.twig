@@ -41,6 +41,15 @@
 			height : 30px;
 		}
 
+		.form-item-categories{
+			box-sizing : border-box;
+			padding : 10px;
+			width : 100%;
+			border : 1px solid #ccc;
+			border-radius : 5px;
+			margin-bottom : 15px;
+		}
+
 		.form-item-publish{
 			width : 100%;
 			height : 40px;
@@ -60,13 +69,14 @@
 
 	<main class="admin-post-create-html">
 		<div class="ecrire-article">
-			<h3>Créer un article</h3>
+			<h3>Ecrire un article</h3>
 
 			{{form_start(form)}}
 
 				{{form_widget(form.title, {'attr': {'placeholder': 'Titre de l\'article', 'class': 'form-item-title','autocomplete': 'off'}})}}
-				{{form_widget(form.content, {'attr': {'placeholder': 'Contenu de l\'article', 'class': 'form-item form-item-content', 'autocomplete': 'off'}})}}
-				{{form_widget(form.publish, {'label': 'Publier l\'article', 'attr': {'class': 'form-item form-item-publish'}})}}
+				{{form_widget(form.content, {'attr': {'placeholder': 'Contenu de l\'article', 'class': 'form-item-content', 'autocomplete': 'off'}})}}
+				{{form_row(form.categories, {'attr': {'class': 'form-item-categories'}})}}
+				{{form_widget(form.publish, {'label': 'Publier l\'article', 'attr': {'class': 'form-item-publish'}})}}
 			
 			{{form_end(form)}}
 		</div>
