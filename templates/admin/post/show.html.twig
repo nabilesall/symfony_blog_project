@@ -12,19 +12,36 @@
 
 		.lecture,.ecrire-commentaire, .commentaires{
 			width:60%;
-			/*align-items : center;*/
 			padding : 20px;
 			background-color : #fff;
 			border-radius : 5px;
 			box-shadow : 0 0 10px rgba(0,0,0,0.2);
 		}
 
-		.lecture h3{
+		.lecture-header{
+			display : flex;
+			flex-direction : row;
+			justify-content : space-between;
+			align-items : center;
+			border-bottom : 1px solid #ccc;
+			height : 60px;
+		}
+
+		.lecture-header h3{
 			font-size : 20px;
 			font-weight : bold;
 			margin-bottom : 10px;
-			border-bottom : 1px solid #ccc;
 			padding-bottom : 15px;
+		}
+
+		.lecture-header a{
+			text-decoration : none;
+			color : #000;
+			font-size : 20px;
+			font-weight : bold;
+			border : 3px solid #eee;
+			border-radius : 50%;
+			padding : 5px;
 		}
 
 		.lecture-content p{
@@ -119,7 +136,10 @@
 
 	<main class="admin-post-show-html">
 		<div class="lecture">
-			<h3>{{post.title}}</h3>
+			<div class="lecture-header">
+				<h3>{{post.title}}</h3>
+				<a href="{{path('admin.post.edit', {'id' : post.id})}}" title="Modifier {{post.title}}">🖊️</a>
+			</div>
 
 			<div class="lecture-content">
 				<p>{{post.content}}</p>

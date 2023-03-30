@@ -9,7 +9,7 @@
 			padding: 60px;
 		}
 	
-		.ecrire-article{
+		.modifier-article{
 			width: 60%;
 			padding: 20px;
 			background-color: #fff;
@@ -17,12 +17,29 @@
 			box-shadow: 0 0 10px rgba(0,0,0,0.2);
 		}
 
-		.ecrire-article h3{
+		.header-edit{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			border-bottom: 1px solid #ccc;
+			height: 60px;
+		}
+
+		.header-edit h3{
 			font-size: 20px;
 			font-weight: bold;
 			margin-bottom: 10px;
-			border-bottom: 1px solid #ccc;
-			padding-bottom: 15px;
+		}
+
+		.header-edit a{
+			text-decoration: none;
+			color: #000;
+			font-size: 20px;
+			font-weight: bold;
+			border: 3px solid #eee;
+			border-radius: 50%;
+			padding: 5px;
 		}
 
 		.form-item-content, .form-item-title{
@@ -39,6 +56,7 @@
 
 		.form-item-title{
 			height : 30px;
+			margin-top : 10px;
 		}
 
 		.form-item-categories{
@@ -66,13 +84,26 @@
 		.form-item-publish:hover{
 			background-color : #333;
 		}
+
+		.btn-group{
+			display: flex;
+			align-items: center;
+			height: 100%;
+			gap : 5px;
+		}
 	</style>
 
 	<title>Post - Modifier</title>
 
 	<main class="admin-post-edit-html">
-		<div class="ecrire-article">
-			<h3>Modifier l'article</h3>
+		<div class="modifier-article">
+			<div class="header-edit">
+				<h3>Modifier l'article</h3>
+				<div class="btn-group">
+					<a href="{{path('admin.post.remove', {'id': post.id})}}" title="Supprimer {{post.title}}">🚮</a>
+					<a href="{{path('admin.post.show',{'id' : post.id})}}" title="Annuler les modifications">🔙</a>
+				</div>
+			</div>
 
 			{{form_start(form)}}
 
@@ -82,6 +113,7 @@
 				{{form_widget(form.publish, {'label': 'Publier les modifications', 'attr': {'class': 'form-item form-item-publish'}})}}
 			
 			{{form_end(form)}}
+
 		</div>
 
 	</main>
