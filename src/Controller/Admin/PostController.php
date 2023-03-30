@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Utils\Text;
 use App\Entity\Post;
 use App\Entity\Comment;
+use App\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -36,13 +37,12 @@ class PostController extends AbstractController
                 );
             }
 
-            //var_dump($post);
-
             //on affiche la page
             return $this->render('admin/post/index.html.twig', [
                 'posts' => $post,
                 'userName' => $request->getSession()->get('userName'),
             ]);
+
         }else{
             //si l'utilisateur n'est pas connecté, on le redirige vers la page de connexion
             return $this->redirectToRoute('connection');
@@ -64,6 +64,12 @@ class PostController extends AbstractController
         //et on redirige vers la page de l'article
         if($form->isSubmitted() && $form->isValid()) {
             $post = $form->getData();
+
+            foreach ($post->getCategories() as $category) {
+                $post->addCategory($category);
+            }
+
+            $post->setPublishedAt(new \DateTime());
 
             $postRepository = $doctrine->getRepository(Post::class);
             $postRepository->save($post,true);
@@ -88,6 +94,12 @@ class PostController extends AbstractController
         $postRepository = $doctrine->getRepository(Post::class);
         $post = $postRepository->find($id);
 
+        //on récupère les catégories
+        $categoryNames = [];
+        foreach($post->getCategories() as $category) {
+            $categoryNames[] = $category->getName();
+        }
+
         $commentRepository = $doctrine->getRepository(Comment::class);
         $comments = $commentRepository->findBy([
             'post' => $id
@@ -102,8 +114,6 @@ class PostController extends AbstractController
                 "userName" => $comments[$i]->getUserName()
             );
         }
-        
-        var_dump($comments);
 
         if($post == null){
             return $this->redirectToRoute('admin.post.index');
@@ -122,12 +132,14 @@ class PostController extends AbstractController
                     $form->addError(new FormError('Le commentaire ne peut pas être vide'));                                     
                     return $this->render('admin/post/show.html.twig', [
                         'post' => $post,
+                        'tags' => $categoryNames,
                         'comments' => $comments,
                         'form' => $form->createView(),
                         'userName' => $request->getSession()->get('userName'),
                     ]);
                 }
 
+                //on enregistre le commentaire
                 $comment->setPost($post->getId());
                 $comment->setUserName($request->getSession()->get('userName'));
 
@@ -136,8 +148,7 @@ class PostController extends AbstractController
 
                 return $this->redirectToRoute('admin.post.show', [
                     'id' => $post->getId()
-                ]);
-                
+                ]);                
             }
 
             $postInArray = array(
@@ -149,6 +160,7 @@ class PostController extends AbstractController
             
             return $this->render('admin/post/show.html.twig', [
                 'post' => $postInArray,
+                'tags' => $categoryNames,
                 'comments' => $comments,
                 'form' => $form->createView(),
                 'userName' => $request->getSession()->get('userName'),
@@ -172,8 +184,17 @@ class PostController extends AbstractController
         if($form->isSubmitted() && $form->isValid()) {
             $post = $form->getData();
 
-            $post ->setTitle($post->getTitle());
-            $post ->setContent($post->getContent());
+            // Mettre à jour les catégories
+            $categories = $form->get('categories')->getData();
+            foreach ($post->getCategories() as $category) {
+                if (!$categories->contains($category)) {
+                    $post->removeCategory($category);
+                }
+            }
+            foreach ($categories as $category) {
+                $post->addCategory($category);
+            }
+
             $postRepository = $doctrine->getRepository(Post::class);
 
             $entityManager->flush();
