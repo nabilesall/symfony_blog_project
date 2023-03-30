@@ -3,6 +3,7 @@
 // Path: src\Controller\Admin\CategoryController.php
 namespace App\Controller\Admin;
 
+use App\Utils\Text;
 use App\Entity\Category;
 use App\Form\CategoryType;
 
@@ -85,8 +86,23 @@ class CategoryController extends AbstractController
                 "name" => $category->getName(),
             );
 
+            $posts = $category->getPosts();
+
+            $postsInArray = array();
+
+            foreach($posts as $post){
+                $postInArray = array(
+                    "id" => $post->getId(),
+                    "title" => $post->getTitle(),
+                    "content" => Text::excerpt($post->getContent()),
+                    "publishedAt" => $post->getPublishedAt(),
+                );
+                $postsInArray[] = $postInArray;
+            }
+
             return $this->render('admin/category/show.html.twig', [
                 'category' => $categoryInArray,
+                'posts' => $postsInArray,
                 'userName' => $request->getSession()->get('userName'),
             ]);
         }

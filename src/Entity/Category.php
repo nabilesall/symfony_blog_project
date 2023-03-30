@@ -19,11 +19,11 @@ class Category
     private ?string $name = null;
 
     #[ORM\ManyToMany(targetEntity: Post::class, mappedBy: 'categories')]
-    private Collection $categories;
+    private Collection $posts;
 
     public function __construct()
     {
-        $this->categories = new ArrayCollection();
+        $this->posts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -46,25 +46,25 @@ class Category
     /**
      * @return Collection<int, Post>
      */
-    public function getCategories(): Collection
+    public function getPosts(): Collection
     {
-        return $this->categories;
+        return $this->posts;
     }
 
-    public function addCategory(Post $category): self
+    public function addPosts(Post $posts): self
     {
-        if (!$this->categories->contains($category)) {
-            $this->categories->add($category);
-            $category->addCategory($this);
+        if (!$this->categories->contains($posts)) {
+            $this->categories->add($posts);
+            $posts->addCategory($this);
         }
 
         return $this;
     }
 
-    public function removeCategory(Post $category): self
+    public function removeCategory(Post $posts): self
     {
-        if ($this->categories->removeElement($category)) {
-            $category->removeCategory($this);
+        if ($this->categories->removeElement($posts)) {
+            $posts->removeCategory($this);
         }
 
         return $this;
