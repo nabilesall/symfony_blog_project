@@ -51,12 +51,12 @@
 
 	<main class="admin-category-edit-html">
 		<div class="creer-categorie">
-			<h3>Modifier la catégorie</h3>
+			<h3>Modifier catégorie</h3>
 
 			{{ form_start(form) }}
 				
 				{{form_widget(form.name,{'attr' : {'placeholder' : 'Le nom de la catégorie', 'class' : 'category-name', 'autocomplete':'off'}})}}
-				{{form_widget(form.publish,{'label' : 'Publier la catégorie', 'attr': {'class' : 'btn-publish'}})}}
+				{{form_widget(form.publish,{'label' : 'Modifier la catégorie', 'attr': {'class' : 'btn-publish'}})}}
 				
 			{{ form_end(form) }}
 
