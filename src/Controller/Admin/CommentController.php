@@ -37,6 +37,7 @@ class CommentController extends AbstractController
             return $this->render('admin/comment/index.html.twig', [
                 'comments' => $comments,
                 'userName' => $request->getSession()->get('userName'),
+                'userStatus' => $request->getSession()->get('userStatus'),
             ]);
         }else{
             //si l'utilisateur n'est pas connecté, on le redirige vers la page de connexion

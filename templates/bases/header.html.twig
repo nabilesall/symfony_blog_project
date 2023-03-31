@@ -7,10 +7,17 @@
 			</div>
 
 			<div class="menu-navigation-droite">
-				<li><a href="/admin/post">Liste des Posts</a></li>				
+				{% if userStatus is defined and userStatus == 0 %}
+					<li><a href="/admin/post">Liste des Posts</a></li>
+				{% else %}
+					<li><a href="/user/post">Liste des Posts</a></li>
+				{% endif %}
+							
 				{% if userName is defined and userName != null %}
-					<li><a href="/admin/category">Liste des Catégories</a></li>
-					<li><a href="/admin/comment">Liste des Commentaires</a></li>
+					{% if userStatus is defined and userStatus == 0 %}
+						<li><a href="/admin/category">Liste des Catégories</a></li>
+						<li><a href="/admin/comment">Liste des Commentaires</a></li>
+					{% endif %}
 					<li><a href="/logout">Déconnexion</a></li>
 				{% else %}
 					<li><a href="/connection">Connexion</a></li>
