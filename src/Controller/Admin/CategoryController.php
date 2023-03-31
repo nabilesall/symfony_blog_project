@@ -20,8 +20,10 @@ class CategoryController extends AbstractController
      */
     public function index(Request $request, ManagerRegistry $doctrine): Response
     {//fonctionne
-        if($request->getSession()->get('userName')!= null){
 
+        //on vérifie que l'admin est connecté
+        if($request->getSession()->get('userName')!= null && $request->getSession()->get('userStatus') == 0)
+        {
             $categoryRepository = $doctrine->getRepository(\App\Entity\Category::class);
             $category = $categoryRepository->findAll();
 
@@ -35,6 +37,7 @@ class CategoryController extends AbstractController
             return $this->render('admin/category/index.html.twig', [
                 'categories' => $category,
                 'userName' => $request->getSession()->get('userName'),
+                'userStatus' => $request->getSession()->get('userStatus'),
             ]);
         }
         else{
@@ -48,27 +51,35 @@ class CategoryController extends AbstractController
      */
     public function create(Request $request, ManagerRegistry $doctrine): Response
     {//fonctionne
-        $category = new Category();
-        $form = $this->createForm(\App\Form\CategoryType::class, $category);
+        //on vérifie que l'admin est connecté
+        if($request->getSession()->get('userName')!= null && $request->getSession()->get('userStatus') == 0)
+        {
+            $category = new Category();
+            $form = $this->createForm(\App\Form\CategoryType::class, $category);
 
-        $form->handleRequest($request);
+            $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
-            $category = $form->getData();
+            if($form->isSubmitted() && $form->isValid()) {
+                $category = $form->getData();
 
-            $categoryRepository = $doctrine->getRepository(Category::class);
-            $categoryRepository->save($category,true);
+                $categoryRepository = $doctrine->getRepository(Category::class);
+                $categoryRepository->save($category,true);
 
-            return $this->redirectToRoute('admin.category.show', [
-                'id' => $category->getId()
+                return $this->redirectToRoute('admin.category.show', [
+                    'id' => $category->getId()
+                ]);
+            }
+
+            return $this->render('admin/category/create.html.twig', [
+                'controller_name' => 'CategoryController',
+                'form' => $form->createView(),
+                'userName' => $request->getSession()->get('userName'),
+                'userStatus' => $request->getSession()->get('userStatus'),
             ]);
         }
-
-        return $this->render('admin/category/create.html.twig', [
-            'controller_name' => 'CategoryController',
-            'form' => $form->createView(),
-            'userName' => $request->getSession()->get('userName'),
-        ]);
+        else{
+            return $this->redirectToRoute('connection');
+        }
     }
 
 
@@ -77,7 +88,8 @@ class CategoryController extends AbstractController
      */
     public function show(Request $request, ManagerRegistry $doctrine, $id): Response
     {//fonctionne
-        if($request->getSession()->get('userName')!= null){
+        //on vérifie que l'admin est connecté
+        if($request->getSession()->get('userName')!= null && $request->getSession()->get('userStatus') == 0){
             $categoryRepository = $doctrine->getRepository(\App\Entity\Category::class);
             $category = $categoryRepository->find($id);
 
@@ -104,6 +116,7 @@ class CategoryController extends AbstractController
                 'category' => $categoryInArray,
                 'posts' => $postsInArray,
                 'userName' => $request->getSession()->get('userName'),
+                'userStatus' => $request->getSession()->get('userStatus'),
             ]);
         }
         else{
@@ -117,28 +130,34 @@ class CategoryController extends AbstractController
      */
     public function edit(Request $request, ManagerRegistry $doctrine, $id): Response
     {//fonctionne
-        $categoryRepository = $doctrine->getRepository(\App\Entity\Category::class);
-        $category = $categoryRepository->find($id);
+        //on vérifie que l'admin est connecté
+        if($request->getSession()->get('userName')!= null && $request->getSession()->get('userStatus') == 0){
+            $categoryRepository = $doctrine->getRepository(\App\Entity\Category::class);
+            $category = $categoryRepository->find($id);
 
-        $form = $this->createForm(CategoryType::class, $category);
+            $form = $this->createForm(CategoryType::class, $category);
 
-        $form->handleRequest($request);
+            $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
-            $category = $form->getData();
+            if($form->isSubmitted() && $form->isValid()) {
+                $category = $form->getData();
 
-            $categoryRepository = $doctrine->getRepository(Category::class);
-            $categoryRepository->save($category,true);
+                $categoryRepository = $doctrine->getRepository(Category::class);
+                $categoryRepository->save($category,true);
 
-            return $this->redirectToRoute('admin.category.show', [
-                'id' => $category->getId(),
+                return $this->redirectToRoute('admin.category.show', [
+                    'id' => $category->getId(),
+                ]);
+            }
+
+            return $this->render('admin/category/edit.html.twig', [
+                'form' => $form->createView(),
+                'userName' => $request->getSession()->get('userName'),
+                'userStatus' => $request->getSession()->get('userStatus'),
             ]);
+        }else{
+            return $this->redirectToRoute('connection');
         }
-
-        return $this->render('admin/category/edit.html.twig', [
-            'form' => $form->createView(),
-            'userName' => $request->getSession()->get('userName'),
-        ]);
     }
 
 
@@ -147,12 +166,15 @@ class CategoryController extends AbstractController
      */
     public function remove(Request $request, ManagerRegistry $doctrine, $id): Response
     {//fonctionne
-        $categoryRepository = $doctrine->getRepository(\App\Entity\Category::class);
-        $category = $categoryRepository->findOneBy(['id' => $id]);
+        //on vérifie que l'admin est connecté
+        if($request->getSession()->get('userName')!= null && $request->getSession()->get('userStatus') == 0){
+            $categoryRepository = $doctrine->getRepository(\App\Entity\Category::class);
+            $category = $categoryRepository->findOneBy(['id' => $id]);
 
-        $categoryRepository->remove($category,true);
+            $categoryRepository->remove($category,true);
 
-        return $this->redirectToRoute('admin.category.index');
+            return $this->redirectToRoute('admin.category.index');
+        }
     }
 }
 

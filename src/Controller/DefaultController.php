@@ -17,14 +17,10 @@ class DefaultController extends AbstractController
     {
         return $this -> render('home.html.twig',[
             'userName' => $request->getSession()->get('userName'),
+            'userStatus' => $request->getSession()->get('userStatus'),
         ]);
     }
 
-    #[Route('/simplicity', methods: ['GET'])]
-    public function simple(): Response
-    {
-        return new Response('Simple! Easy! Great!');
-    }
 }
 
 ?>
