@@ -1,0 +1,176 @@
+{% extends "bases/base.html.twig" %}
+
+{% block body %}
+	<style>
+		.user-post-show-html{
+			display : flex;
+			flex-direction : column;
+			gap: 20px;
+			align-items : center;
+			padding : 20px;
+		}
+
+		.lecture,.ecrire-commentaire, .commentaires{
+			width:60%;
+			padding : 20px;
+			background-color : #fff;
+			border-radius : 5px;
+			box-shadow : 0 0 10px rgba(0,0,0,0.2);
+		}
+
+		.lecture-header{
+			display : flex;
+			flex-direction : row;
+			justify-content : space-between;
+			align-items : center;
+			border-bottom : 1px solid #ccc;
+			height : 60px;
+		}
+
+		.lecture-header h3{
+			font-size : 20px;
+			font-weight : bold;
+			margin-bottom : 10px;
+			padding-bottom : 15px;
+		}
+
+		.lecture-content p{
+			font-size : 15px;
+			line-height : 1.5;
+			text-align : justify;
+		}
+
+		.tags{
+			display : flex;
+			flex-direction : row;
+			gap : 10px;
+			margin-top : 10px;
+		}
+
+		.tags p{
+			margin: 0;
+		}
+		.tags p:not(:first-child) {
+			font-size: 15px;
+			font-style: italic;
+		}
+
+
+		.lecture-footer p, .date-commentaire-partage{
+			font-size : 12px;
+			font-style : italic;
+			text-align : right;
+		}
+
+		.ecrire-commentaire h3{
+			font-size : 20px;
+			font-weight : bold;
+			margin-bottom : 10px;
+			border-bottom : 1px solid #ccc;
+			padding-bottom : 15px;
+		}
+
+		.form-control{
+			width : 100%;
+			height : 100px;
+			padding : 10px;
+			border : 1px solid #ccc;
+			border-radius : 5px;
+			margin-bottom : 10px;
+			resize : none;
+		}
+
+		.btn-submit{
+			width : 100%;
+			height : 40px;
+			background-color : #000;
+			color : #fff;
+			border : none;
+			border-radius : 5px;
+			cursor : pointer;
+		}
+
+		.btn-submit:hover{
+			background-color : #333;
+		}
+
+		.commentaires h3{
+			font-size : 20px;
+			font-weight : bold;
+			margin-bottom : 10px;
+			border-bottom : 1px solid #ccc;
+			padding-bottom : 15px;
+		}
+
+		.commentaire-partage{
+			padding : 10px;
+			background-color : #fff;
+			border-radius : 5px;
+			box-shadow : 0 0 10px rgba(0,0,0,0.2);
+			margin-bottom : 10px;
+		}
+
+		.nom-commentaire-partage{
+			font-size : 15px;
+			margin: 0;
+		}
+
+		.content-commentaire-partage{
+			font-size : 13px;
+			line-height : 1.5;
+			text-align : justify;
+		}
+	</style>
+
+	<title>Post - Lire</title>
+
+	<main class="user-post-show-html">
+		<div class="lecture">
+			<div class="lecture-header">
+				<h3>{{post.title}}</h3>
+			</div>
+
+			<div class="lecture-content">
+				<p>{{post.content}}</p>
+			</div>
+
+			<div class="tags">
+				<p>Catégories :</p>
+				{% for tag in tags %}
+					<p>-{{tag}}</p>
+				{% endfor %}
+			</div>
+
+			<div class="lecture-footer">
+				<p>Posté le {{post.publishedAt|date('d/m/Y')}}</p>
+			</div>
+		</div>
+
+		<div class="ecrire-commentaire">
+			<h3>Ecrire un commentaire</h3>
+		
+			{{ form_start(form) }}
+
+				{{form_widget(form.content, {'attr' : {'placeholder' : 'Laisser un commentaire ...', 'class' : 'form-control'}})}}
+				{{form_widget(form.comment,{'label' : 'Envoyer un commentaire', 'attr' : {'class' : 'btn-submit'}})}}
+		
+			{{ form_end(form) }}
+
+			{% if form.content.vars.errors %}
+    			<div class="alert alert-danger">{{ form_errors(form) }}</div>
+			{% endif %}
+		</div>
+
+		<div class="commentaires">
+			<h3>Commentaires</h3>
+			{% for comment in comments %}
+				<div class="commentaire-partage">
+					<p class="nom-commentaire-partage">{{comment.userName}}</p>
+					<p class="content-commentaire-partage">{{comment.content}}</p>
+					<p class="date-commentaire-partage">Posté le {{comment.publishedAt|date('d/m/Y')}}</p>
+				</div>
+			{% endfor %}
+		</div>
+		
+	</main>
+{% endblock %}

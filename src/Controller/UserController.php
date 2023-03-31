@@ -36,13 +36,13 @@ class UserController extends AbstractController
 
             if ($user) {
                 $request->getSession()->set('userName', $user->getUserName());
+                $request->getSession()->set('userStatus', $user->getUserStatus());
                 return $this->redirectToRoute('home');                
             }
         }
 
         return $this->render('connection.html.twig', [
-            'form' => $form->createView(),
-            'controller_name' => 'ConnectionController',
+            'form' => $form->createView()
         ]);
     }
 
@@ -80,6 +80,7 @@ class UserController extends AbstractController
     public function logout(Request $request): Response
     {
         $request->getSession()->set('userName', null);
+        $request->getSession()->set('userStatus', null);
         return $this->redirectToRoute('connection');
     }
 }
