@@ -153,6 +153,7 @@ class PostController extends AbstractController
                     //on enregistre le commentaire
                     $comment->setPost($post->getId());
                     $comment->setUserName($request->getSession()->get('userName'));
+                    $comment->setCreatedAt(new \DateTime());
 
                     $commentRepository = $doctrine->getRepository(Comment::class);
                     $commentRepository->save($comment,true);
