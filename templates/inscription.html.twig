@@ -72,6 +72,15 @@
 			color: #007bff;
 			text-decoration: none;
 		}
+
+		.alert-danger{
+			color: red;
+			font-weight: bold;
+		}
+
+		li{
+			list-style: none;
+		}
 	</style>
 
 	<title>Inscription</title>
@@ -88,6 +97,9 @@
 				
 				{{ form_widget(form.createAccount, {'label' : 'Créer un compte', 'attr' : {'class' : 'btn-inscrire'}}) }}
 			
+				{% if form.UserPassword.vars.errors %}
+    				<div class="alert alert-danger">{{ form_errors(form) }}</div>
+				{% endif %}
 			{{ form_end(form) }}
 		</div>
 
