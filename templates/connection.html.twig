@@ -71,6 +71,15 @@
 			color: #007bff;
 			text-decoration: none;
 		}
+
+		.alert-danger{
+			color: red;
+			font-weight: bold;
+		}
+
+		li{
+			list-style: none;
+		}
 	</style>
 
 	<title>Connexion</title>
@@ -80,13 +89,15 @@
 			<h3>Connexion</h3>
 
 			{{ form_start(form) }}
-				{{form_errors(form)}}
-
+			
 				{{form_widget(form.UserName, {'attr': {'placeholder': 'Nom d\'utilisateur', 'class': 'form-control', 'autocomplete': 'off'}})}}
 				{{form_widget(form.UserPassword, {'attr': {'placeholder': 'Mot de passe', 'class': 'form-control'}})}}
 
 				{{form_widget(form.connection, {'label': 'Se connecter', 'attr': {'class': 'btn btn-connecter'}})}}
-		
+
+				{% if form.UserPassword.vars.errors %}
+    				<div class="alert alert-danger">{{ form_errors(form) }}</div>
+				{% endif %}
 			{{ form_end(form) }}
 		</div>
 
