@@ -20,9 +20,6 @@ class UserController extends AbstractController
      */
     public function connection(Request $request, ManagerRegistry $doctrine): Response
     {
-
-        echo password_hash("ad", PASSWORD_DEFAULT, ['cost' => 12]);;
-
         $userForConnection = new User();
         $form = $this->createForm(ConnectionType::class, $userForConnection);
 
