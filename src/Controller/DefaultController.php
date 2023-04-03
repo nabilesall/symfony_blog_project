@@ -10,8 +10,12 @@ use Doctrine\Persistence\ManagerRegistry;
 
 class DefaultController extends AbstractController
 {
-    #[Route('/', methods: ['GET'])]
+    
     /**
+     * Cette méthode permet d'afficher la page d'accueil
+     * Elle affiche les 6 derniers articles publiés
+     * Elle affiche les catégories
+     * 
      * @Route("/", name="home")
      */
     public function index(Request $request, ManagerRegistry $doctrine): Response
