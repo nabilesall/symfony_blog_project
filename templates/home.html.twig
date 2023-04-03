@@ -4,6 +4,186 @@
 
 {% block body %}  
 
-    <h1>je suis le home page</h1>
+    <style>
+
+        body{
+            margin: 0;
+        }
+
+        .home-html{
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            background: #eee    ;
+        }
+
+        .welcome {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgb(2,0,36);
+            background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(7,7,99,1) 0%, rgba(9,9,121,1) 15%, rgba(6,87,173,1) 43%, rgba(0,212,255,1) 65%);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .welcome h1 {
+            color: #fff;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .welcome p {
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .categories{
+            margin: 30px;
+        }
+
+        .categories ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            align-items: center;
+        }
+
+
+        .categories ul li a {
+            color: #eee;
+            text-decoration: none;
+            border: 2px solid #ccc;
+            padding: 5px;
+           font-weight: bold;
+        }
+
+        .categories ul li a:hover {
+            text-decoration: underline;
+            background: #fff;
+            color: #000;
+        }
+
+        .message {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .articles {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: rgb(0,212,255);
+            background: linear-gradient(90deg, rgba(0,212,255,1) 13%, rgba(15,121,184,1) 43%, rgba(9,9,121,1) 87%);
+        }
+
+        .articles h1{
+            color: #fff;
+            font-size: 30px;
+            margin: 0;
+        }
+
+        .articles-list {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 50px;
+            justify-content: center;
+            margin:40px;
+        }
+
+        .article {
+            width: 300px;
+            background: #eee;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            border-radius: 10px;
+        }
+
+        .article h3 {
+            font-size: 16px;
+            margin: 0;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .article p {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .article a {
+            text-decoration: none;
+            color: #0657ad;
+            margin-top: 10px;
+        }
+
+    </style>
+
+    <main class="home-html">
+        <div class="welcome">
+            <h1>Nabile Blog</h1>
+            <p>Un blog pour partager mes connaissances et mes expériences</p>
+
+            <div class="categories">
+                <ul>
+                    <li><a href="#">Développement</a></li>
+                    <li><a href="#">Design</a></li>
+                    <li><a href="#">Marketing</a></li>
+                    <li><a href="#">Gestion</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="message">
+            <h3>Connectez-vous pour accéder à votre espace personnel</h3>
+        </div>
+
+        <div class="articles">
+            <h1>Articles récentes</h1>
+            <div class="articles-list">
+                <div class="article">
+                    <h3>Titre de l'article</h3>
+                    <p>Contenu de l'article</p>
+                    <a href="#">Lire la suite</a>
+                </div>
+
+                <div class="article">
+                    <h3>Titre de l'article</h3>
+                    <p>Contenu de l'article</p>
+                    <a href="#">Lire la suite</a>
+                </div>
+
+                <div class="article">
+                    <h3>Titre de l'article</h3>
+                    <p>Contenu de l'article</p>
+                </div>
+
+                <div class="article">
+                    <h3>Titre de l'article</h3>
+                    <p>Contenu de l'article</p>
+                </div>
+                <div class="article">
+                    <h3>Titre de l'article</h3>
+                    <p>Contenu de l'article</p>
+                </div>
+                <div class="article">
+                    <h3>Titre de l'article</h3>
+                    <p>Contenu de l'article</p>
+                    <a href="#">Lire la suite</a>
+                </div>
+            </div>
+        </div>
+    </main>
 
 {% endblock %}
