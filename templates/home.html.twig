@@ -153,7 +153,12 @@
             <div class="categories">
                 <ul>
                     {% for category in categories %}
-                        <li><a href="{{ path('user.category.show', {'id': category.id}) }}">{{ category.name }}</a></li>
+                        {% if userStatus is defined and userStatus == 0 %}
+                            <li><a href="{{ path('admin.category.show', {'id': category.id}) }}">{{ category.name }}</a></li>
+                        {% else %}
+                            <li><a href="{{ path('user.category.show', {'id': category.id}) }}">{{ category.name }}</a></li>
+                        {% endif %}
+                        
                     {% endfor %}
                 </ul>
             </div>
@@ -172,7 +177,11 @@
                         <h3>{{ article.title }}</h3>
                         <p>{{ article.content }}</p>
                         <div class="article-footer">
-                            <a href="{{path('user.post.show', {'id': article.id} )}}">Lire la suite</a>
+                            {% if userStatus is defined and userStatus == 0 %}
+                                <a href="{{ path('admin.post.show', {'id': article.id} ) }}">Lire la suite</a>
+                            {% else %}
+                                <a href="{{ path('user.post.show', {'id': article.id} ) }}">Lire la suite</a>
+                            {% endif %}
                             <p>Publié le {{ article.publishedAt|date('d/m/Y') }}</p>
                         </div>
                     </div>

@@ -1,5 +1,7 @@
 {% extends "bases/base.html.twig" %}
 
+{% block title %}Les postes{% endblock %}
+
 {% block body %}
 	<style>
 
@@ -78,8 +80,6 @@
 		}
 	</style>
 
-	<title>Posts</title>
-
 	<main class="user-post-index-html">
 		<div class="posts">
 			<div class="header-posts">
@@ -94,29 +94,10 @@
 					</div>
 					<div class="separator"></div>
 					<p class="post-content">{{ post.content }}</p>
-					<a href="/user/post/{{ post.id }}">Lire la suite</a>
+					<a href="{{ path('user.post.show', {'id': post.id}) }}">Lire la suite</a>
 				</div>
 			{% endfor %}
 
-			<div class="single-post">
-				<div class="post-header">
-					<h2>Titre 1</h2>
-					<p class="date-publication">le 12/12/2020</p>
-				</div>
-				<div class="separator"></div>
-				<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique repellat optio vel, nemo minus maxime esse perferendis, nesciunt unde consequuntur, quia ea laudantium eum dolore officia cupiditate eos quos architecto</p>
-				<a href="/user/post/2">Lire la suite</a>
-			</div>
-
-			<div class="single-post">
-				<div class="post-header">
-					<h2>Titre 1</h2>
-					<p class="date-publication">le 12/12/2020</p>
-				</div>
-				<div class="separator"></div>
-				<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique repellat optio vel, nemo minus maxime esse perferendis, nesciunt unde consequuntur, quia ea laudantium eum dolore officia cupiditate eos quos architecto</p>
-				<a href="/user/post/2">Lire la suite</a>
-			</div>
 		</div>
 	</main>
 {% endblock %}

@@ -11,6 +11,8 @@ use Doctrine\Persistence\ManagerRegistry;
 class CategoryController extends AbstractController
 {
     /**
+     * Cette méthode permet d'afficher une catégorie
+     * 
      * @Route("/user/category/{id}", name="user.category.show")
      */
     public function show(Request $request, ManagerRegistry $doctrine, $id): Response
@@ -27,6 +29,8 @@ class CategoryController extends AbstractController
 
         $postsInArray = array();
 
+        //on transforme les objets en tableau associatif
+        //pour pouvoir les utiliser dans la vue plus facilement
         foreach($posts as $post){
             $postInArray = array(
                 "id" => $post->getId(),
