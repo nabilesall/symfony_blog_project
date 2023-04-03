@@ -16,11 +16,12 @@ use Symfony\Component\Form\FormError;
 class PostController extends AbstractController
 {
     /**
+     * Cette méthode permet d'afficher la liste des articles
+     * 
      * @Route("admin/post", name="admin.post.index")
      */
     public function index(Request $request, ManagerRegistry $doctrine): Response
     {
-
         //on vérifie que l'admin est connecté
         if($request->getSession()->get('userName')!= null && $request->getSession()->get('userStatus') == 0){
             //on récupère les posts
@@ -37,7 +38,6 @@ class PostController extends AbstractController
                 );
             }
 
-            //on affiche la page
             return $this->render('admin/post/index.html.twig', [
                 'posts' => $post,
                 'userName' => $request->getSession()->get('userName'),
@@ -52,6 +52,8 @@ class PostController extends AbstractController
 
 
     /**
+     * Cette méthode permet de créer un article
+     * 
      * @Route("admin/post/create", name="admin.post.create")
      */
     public function create(Request $request, ManagerRegistry $doctrine): Response
@@ -95,6 +97,8 @@ class PostController extends AbstractController
     }
 
     /**
+     * Cette méthode permet d'afficher un article
+     * 
      * @Route("admin/post/{id}", name="admin.post.show")
      */
     public function show(Request $request, ManagerRegistry $doctrine, $id): Response
@@ -187,6 +191,8 @@ class PostController extends AbstractController
 
 
     /**
+     * Cette méthode permet de modifier un article
+     * 
      * @Route("admin/post/{id}/edit", name="admin.post.edit")
      */
     public function edit(Request $request, ManagerRegistry $doctrine, $id): Response
@@ -242,6 +248,8 @@ class PostController extends AbstractController
 
 
     /**
+     * Cette méthode permet de supprimer un article
+     * 
      * @Route("admin/post/{id}/remove", name="admin.post.remove")
      */
 
@@ -263,3 +271,5 @@ class PostController extends AbstractController
         }
     }
 }
+
+?>

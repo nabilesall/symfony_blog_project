@@ -16,6 +16,8 @@ use Symfony\Component\Form\FormError;
 class UserController extends AbstractController
 {
     /**
+     * Cette methode permet de se connecter
+     * 
      * @Route("/connection", name="connection")
      */
     public function connection(Request $request, ManagerRegistry $doctrine): Response
@@ -54,6 +56,8 @@ class UserController extends AbstractController
 
 
     /**
+     * Cette methode permet de s'inscrire
+     * 
      * @Route("/inscription", name="inscription")
      */
     public function inscription(Request $request, ManagerRegistry $doctrine): Response
@@ -78,7 +82,7 @@ class UserController extends AbstractController
                 ]);
             }
             else{
-                // Hashing the password
+                // Hasher le mot de passe
                 $plainPassword = $doctrine->getRepository(User::class)->getUserPassword();
                 $hashedPassword = password_hash($plainPassword, PASSWORD_DEFAULT, ['cost' => 12]);
                 $userForInscription->setUserPassword($hashedPassword);
@@ -97,6 +101,7 @@ class UserController extends AbstractController
 
 
     /**
+     * Cette methode permet de se deconnecter
      * @Route("/logout", name="logout")
      */
     public function logout(Request $request): Response

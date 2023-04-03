@@ -19,6 +19,9 @@ use Symfony\Component\Form\FormError;
 class PostController extends AbstractController
 {
     /**
+     * Cette méthode permet d'afficher la liste des articles
+     * pour un utilisateur connecté ou non connecté
+     * 
      * @Route("user/post", name="user.post.index")
      */
     public function index(Request $request, ManagerRegistry $doctrine): Response
@@ -26,6 +29,8 @@ class PostController extends AbstractController
         $postRepository = $doctrine->getRepository(Post::class);
         $post = $postRepository->findAll();  
 
+        //on transforme les objets en tableau associatif
+        //pour pouvoir les utiliser dans la vue plus facilement
         for($i=0; $i < count($post); $i++){
             $post[$i] = array(
                 "id" => $post[$i]->getId(),
@@ -43,6 +48,8 @@ class PostController extends AbstractController
 
 
     /**
+     * Cette méthode permet d'afficher un article
+     * 
      * @Route("user/post/{id}", name="user.post.show")
      */
     public function show(Request $request, ManagerRegistry $doctrine, $id): Response
@@ -72,7 +79,7 @@ class PostController extends AbstractController
 
         if($post == null){
             return $this->redirectToRoute('user.post.index');
-        }else{
+        }else{// Si l'article existe on affiche le formulaire de commentaire
             $comment = new Comment();
             $form = $this->createForm(\App\Form\CommentType::class, $comment);
             $form->handleRequest($request);
@@ -99,6 +106,8 @@ class PostController extends AbstractController
                 }else{
                     $comment->setUserName($request->getSession()->get('userName'));
                 }
+
+                $comment->setCreatedAt(new \DateTime());
 
                 $commentRepository -> save($comment,true);
 
