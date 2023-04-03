@@ -1,0 +1,101 @@
+{% extends "bases/base.html.twig" %}
+
+{% block body %}
+	<style>
+		.admin-category-show-html{
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			align-items: center;
+			gap: 15px;
+			padding:20px
+		}
+
+		.single-category-container{
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			align-items: center;
+			width: 60%;
+			height: 10vh;
+			background-color: #fff;
+			border-radius: 10px;
+			box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+		}
+
+		.posts {
+			display: flex;
+			width: 60%;
+			flex-direction: column;
+		}
+
+		.post-header {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.date-publication {
+			font-size: 0.8em;
+			color: #aaa;
+			margin: 0;
+    		align-self: center;
+		}
+
+		.single-post {
+			margin-bottom: 1em;			
+			background-color : #fff;
+			border-radius : 5px;
+			padding: 10px;
+			padding-bottom: 20px;
+			box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+		}
+
+		.single-post .post-content{
+			text-align: justify;
+		}
+
+		.single-post a{
+			text-decoration: none;
+			color: #000;
+			font-weight: bold;
+			transition: all 0.3s ease;
+			border: 1px solid;
+			padding: 10px;
+			border-radius: 10px;
+		}
+
+		.single-post a:hover {
+			background-color: #000;
+			color: #fff;
+		}
+
+		.separator{
+			width: 100%;
+			height: 1px;
+			background-color: #eee;
+		}
+	</style>
+
+	<title>category - show</title>
+
+	<main class="admin-category-show-html">
+		<div class="single-category-container">
+			{{category.name}}
+		</div>
+
+		<div class="posts">
+			{% for post in posts %}
+				<div class="single-post">
+					<div class="post-header">
+						<h2>{{ post.title }}</h2>
+						<p class="date-publication">le {{ post.publishedAt|date('d/m/Y') }}</p>
+					</div>
+					<div class="separator"></div>
+					<p class="post-content">{{ post.content }}</p>
+					<a href="/user/post/{{ post.id }}">Lire la suite</a>
+				</div>
+			{% endfor %}
+		</div>
+
+	</main>
+{% endblock %}
