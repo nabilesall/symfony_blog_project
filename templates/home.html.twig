@@ -29,13 +29,13 @@
 
         .welcome h1 {
             color: #fff;
-            font-size: 30px;
+            font-size: 50px;
             margin-bottom: 10px;
         }
 
         .welcome p {
             color: #fff;
-            font-size: 16px;
+            font-size: 20px;
             margin-bottom: 20px;
         }
 
@@ -104,7 +104,7 @@
         .article {
             width: 300px;
             background: #eee;
-            padding: 10px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             border-radius: 10px;
@@ -120,12 +120,27 @@
         .article p {
             font-size: 16px;
             margin-top: 10px;
+            text-align: justify;
         }
 
-        .article a {
+        .article-footer {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .article-footer p {
+            margin: 0;
+            font-size: 12px;
+            color: #000;
+            font-style : italic;
+			text-align : right;
+        }
+
+        .article-footer a {
             text-decoration: none;
             color: #0657ad;
-            margin-top: 10px;
         }
 
     </style>
@@ -137,10 +152,9 @@
 
             <div class="categories">
                 <ul>
-                    <li><a href="#">Développement</a></li>
-                    <li><a href="#">Design</a></li>
-                    <li><a href="#">Marketing</a></li>
-                    <li><a href="#">Gestion</a></li>
+                    {% for category in categories %}
+                        <li><a href="#">{{ category.name }}</a></li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
@@ -150,40 +164,23 @@
         </div>
 
         <div class="articles">
-            <h1>Articles récentes</h1>
+            <h1>Articles récent</h1>
             <div class="articles-list">
-                <div class="article">
-                    <h3>Titre de l'article</h3>
-                    <p>Contenu de l'article</p>
-                    <a href="#">Lire la suite</a>
-                </div>
 
-                <div class="article">
-                    <h3>Titre de l'article</h3>
-                    <p>Contenu de l'article</p>
-                    <a href="#">Lire la suite</a>
-                </div>
+                {% for article in articles %}
+                    <div class="article">
+                        <h3>{{ article.title }}</h3>
+                        <p>{{ article.content }}</p>
+                        <div class="article-footer">
+                            <a href="{{path('user.post.show', {'id': article.id} )}}">Lire la suite</a>
+                            <p>Publié le {{ article.publishedAt|date('d/m/Y') }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
 
-                <div class="article">
-                    <h3>Titre de l'article</h3>
-                    <p>Contenu de l'article</p>
-                </div>
-
-                <div class="article">
-                    <h3>Titre de l'article</h3>
-                    <p>Contenu de l'article</p>
-                </div>
-                <div class="article">
-                    <h3>Titre de l'article</h3>
-                    <p>Contenu de l'article</p>
-                </div>
-                <div class="article">
-                    <h3>Titre de l'article</h3>
-                    <p>Contenu de l'article</p>
-                    <a href="#">Lire la suite</a>
-                </div>
             </div>
         </div>
+        
     </main>
 
 {% endblock %}
