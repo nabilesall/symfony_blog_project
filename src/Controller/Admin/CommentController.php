@@ -14,6 +14,9 @@ use Doctrine\Persistence\ManagerRegistry;
 class CommentController extends AbstractController
 {
     /**
+     * Cette méthode permet d'afficher la liste des commentaires
+     * Elle est le point d'entrée de l'URL /admin/comment
+     * 
      * @Route("/admin/comment", name="admin.comment.index")
      */
     public function index(ManagerRegistry $doctrine, Request $request)
@@ -23,7 +26,8 @@ class CommentController extends AbstractController
             $commentRepository = $doctrine->getRepository(Comment::class);
             $comments = $commentRepository->findAll();
 
-            //on transforme les objets en tableau pour pouvoir les afficher dans twig avec un for
+            //on transforme les objets en tableau pour 
+            //pouvoir les afficher dans twig avec un for
             for ($i=0; $i < count($comments); $i++) { 
                 $comments[$i] = array(
                     "id" => $comments[$i]->getId(),
@@ -47,6 +51,8 @@ class CommentController extends AbstractController
 
 
     /**
+     * Cette méthode permet de supprimer un commentaire
+     * 
      * @Route("/admin/comment/{id}/remove", name="admin.comment.remove")
      */
     public function remove(ManagerRegistry $doctrine, Request $request, $id)

@@ -1,5 +1,7 @@
 {% extends "bases/base.html.twig" %}
 
+{% block title %}Lire poste{% endblock %}
+
 {% block body %}
 	<style>
 		.user-post-show-html{
@@ -122,8 +124,6 @@
 		}
 	</style>
 
-	<title>Post - Lire</title>
-
 	<main class="user-post-show-html">
 		<div class="lecture">
 			<div class="lecture-header">
@@ -142,7 +142,7 @@
 			</div>
 
 			<div class="lecture-footer">
-				<p>Posté le {{post.publishedAt|date('d/m/Y')}}</p>
+				<p>Publié le {{post.publishedAt|date('d/m/Y')}}</p>
 			</div>
 		</div>
 
@@ -167,7 +167,7 @@
 				<div class="commentaire-partage">
 					<p class="nom-commentaire-partage">{{comment.userName}}</p>
 					<p class="content-commentaire-partage">{{comment.content}}</p>
-					<p class="date-commentaire-partage">Posté le {{comment.publishedAt|date('d/m/Y')}}</p>
+					<p class="date-commentaire-partage">Publié le {{comment.publishedAt|date('d/m/Y')}}</p>
 				</div>
 			{% endfor %}
 		</div>

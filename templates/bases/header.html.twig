@@ -14,20 +14,20 @@
 			</div>
 
 			<div class="menu-navigation-droite">
-				{% if userStatus is defined and userStatus == 0 %}
-					<li {% if app.request.attributes.get('_route') == 'admin.post.index' %}class="active"{% endif %}><a href="/admin/post">Liste des Posts</a></li>
+				{% if userName is defined and userName != null and userStatus is defined and userStatus == 0 %}
+					<li {% if app.request.attributes.get('_route') == 'admin.post.index' %}class="active"{% endif %}><a href="{{ path('admin.post.index') }}">Liste des Posts</a></li>
 				{% else %}
-					<li {% if app.request.attributes.get('_route') == 'user.post.index' %}class="active"{% endif %}><a href="/user/post">Liste des Posts</a></li>
+					<li {% if app.request.attributes.get('_route') == 'user.post.index' %}class="active"{% endif %}><a href="{{ path('user.post.index') }}">Liste des Posts</a></li>
 				{% endif %}
 							
 				{% if userName is defined and userName != null %}
 					{% if userStatus is defined and userStatus == 0 %}
-						<li {% if app.request.attributes.get('_route') == 'admin.category.index' %}class="active"{% endif %}><a href="/admin/category">Liste des Catégories</a></li>
-						<li {% if app.request.attributes.get('_route') == 'admin.comment.index' %}class="active"{% endif %}><a href="/admin/comment">Liste des Commentaires</a></li>
+						<li {% if app.request.attributes.get('_route') == 'admin.category.index' %}class="active"{% endif %}><a href="{{ path('admin.category.index') }}">Liste des Catégories</a></li>
+						<li {% if app.request.attributes.get('_route') == 'admin.comment.index' %}class="active"{% endif %}><a href="{{ path('admin.comment.index') }}">Liste des Commentaires</a></li>
 					{% endif %}
 					<li><a href="/logout">Déconnexion</a></li>
 				{% else %}
-					<li {% if app.request.attributes.get('_route') == 'connection' %}class="active"{% endif %}><a href="/connection">Connexion</a></li>
+					<li {% if app.request.attributes.get('_route') == 'connection' %}class="active"{% endif %}><a href="{{ path('connection') }}">Connexion</a></li>
 				{% endif %}
 			</div>			
 		</ul>

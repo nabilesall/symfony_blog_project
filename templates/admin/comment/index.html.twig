@@ -1,5 +1,7 @@
 {% extends "bases/base.html.twig" %}
 
+{% block title %}Commentaires{% endblock %}
+
 {% block body %}
 	<style>
 		.admin-comment-index-html{
@@ -59,13 +61,12 @@
 		}
 	</style>
 
-	<title>Commentaires</title>
-
 	<main class="admin-comment-index-html">
 		<div class="comments">
 			<h3>Commentaires</h3>
 			
 			<div class="body-comments">
+
 				<table class="table table-striped">
 					<thead>
 						<tr>
@@ -89,8 +90,10 @@
 							</tr>
 						{% endfor %}
 					</tbody>
+
 				</table>
 			</div>
+
 		</div>
 	</main>
 

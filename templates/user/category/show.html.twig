@@ -1,5 +1,7 @@
 {% extends "bases/base.html.twig" %}
 
+{% block title %}Afficher catégories{% endblock %}
+
 {% block body %}
 	<style>
 		.admin-category-show-html{
@@ -76,8 +78,6 @@
 		}
 	</style>
 
-	<title>category - show</title>
-
 	<main class="admin-category-show-html">
 		<div class="single-category-container">
 			{{category.name}}
@@ -92,7 +92,7 @@
 					</div>
 					<div class="separator"></div>
 					<p class="post-content">{{ post.content }}</p>
-					<a href="/user/post/{{ post.id }}">Lire la suite</a>
+					<a href=" {{ path('admin.post.show', {'id': post.id}) }} ">Lire la suite</a>
 				</div>
 			{% endfor %}
 		</div>

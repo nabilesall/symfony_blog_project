@@ -1,6 +1,6 @@
 <?php
 
-// Path: src\Controller\Admin\CategoryController.php
+
 namespace App\Controller\Admin;
 
 use App\Utils\Text;
@@ -16,17 +16,21 @@ use Doctrine\Persistence\ManagerRegistry;
 class CategoryController extends AbstractController
 {
     /**
+     * Cette méthode permet d'afficher la liste des catégories
+     * Elle est le point d'entrée de l'URL /admin/category
+     * 
      * @Route("/admin/category", name="admin.category.index")
      */
     public function index(Request $request, ManagerRegistry $doctrine): Response
-    {//fonctionne
-
+    {
         //on vérifie que l'admin est connecté
         if($request->getSession()->get('userName')!= null && $request->getSession()->get('userStatus') == 0)
         {
             $categoryRepository = $doctrine->getRepository(\App\Entity\Category::class);
             $category = $categoryRepository->findAll();
 
+            //on transforme les objets en tableau associatif
+            //pour pouvoir les utiliser dans la vue plus facilement
             for($i=0; $i < count($category); $i++){
                 $category[$i] = array(
                     "id" => $category[$i]->getId(),
@@ -47,10 +51,13 @@ class CategoryController extends AbstractController
 
 
     /**
+     * Cette méthode permet d'afficher le formulaire de création d'une catégorie
+     * Elle permet aussi de traiter le formulaire pour créer la catégorie
+     * 
      * @Route("/admin/category/create", name="admin.category.create")
      */
     public function create(Request $request, ManagerRegistry $doctrine): Response
-    {//fonctionne
+    {
         //on vérifie que l'admin est connecté
         if($request->getSession()->get('userName')!= null && $request->getSession()->get('userStatus') == 0)
         {
@@ -84,10 +91,12 @@ class CategoryController extends AbstractController
 
 
     /**
+     * Cette méthode permet d'afficher le détail d'une catégorie
+     * 
      * @Route("/admin/category/{id}", name="admin.category.show")
      */
     public function show(Request $request, ManagerRegistry $doctrine, $id): Response
-    {//fonctionne
+    {
         //on vérifie que l'admin est connecté
         if($request->getSession()->get('userName')!= null && $request->getSession()->get('userStatus') == 0){
             $categoryRepository = $doctrine->getRepository(\App\Entity\Category::class);
@@ -102,6 +111,8 @@ class CategoryController extends AbstractController
 
             $postsInArray = array();
 
+            //on transforme les objets en tableau associatif
+            //pour pouvoir les utiliser dans la vue plus facilement
             foreach($posts as $post){
                 $postInArray = array(
                     "id" => $post->getId(),
@@ -126,10 +137,13 @@ class CategoryController extends AbstractController
 
 
     /**
+     * Cette méthode permet d'afficher le formulaire d'édition d'une catégorie
+     * Elle permet aussi de traiter le formulaire pour modifier la catégorie
+     * 
      * @Route("/admin/category/{id}/edit", name="admin.category.edit")
      */
     public function edit(Request $request, ManagerRegistry $doctrine, $id): Response
-    {//fonctionne
+    {
         //on vérifie que l'admin est connecté
         if($request->getSession()->get('userName')!= null && $request->getSession()->get('userStatus') == 0){
             $categoryRepository = $doctrine->getRepository(\App\Entity\Category::class);
@@ -162,10 +176,12 @@ class CategoryController extends AbstractController
 
 
     /**
+     * Cette méthode permet de supprimer une catégorie
+     * 
      * @Route("/admin/category/{id}/remove", name="admin.category.remove")
      */
     public function remove(Request $request, ManagerRegistry $doctrine, $id): Response
-    {//fonctionne
+    {
         //on vérifie que l'admin est connecté
         if($request->getSession()->get('userName')!= null && $request->getSession()->get('userStatus') == 0){
             $categoryRepository = $doctrine->getRepository(\App\Entity\Category::class);
@@ -177,6 +193,5 @@ class CategoryController extends AbstractController
         }
     }
 }
-
 
 ?>
