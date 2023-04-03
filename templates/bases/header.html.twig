@@ -3,7 +3,10 @@
 .menu-navigation li.active {
 	background-color: #504b4b;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 78fb58bf05c8f336cebfc90d0f81c3659a00c641
 </style>
 
 <header>
@@ -11,24 +14,40 @@
 	<nav>
 		<ul class="menu-navigation">
 			<div class="menu-navigation-gauche">
-				<li><a href="/">Blog</a></li>
+				<li {% if app.request.attributes.get('_route') == 'home' %}class="active"{% endif %}><a href="/">Blog</a></li>
 			</div>
 
 			<div class="menu-navigation-droite">
+<<<<<<< HEAD
 				{% if userName is defined and userName != null and userStatus is defined and userStatus == 0 %}
 					<li {% if app.request.attributes.get('_route') == 'admin.post.index' %}class="active"{% endif %}><a href="{{ path('admin.post.index') }}">Liste des Posts</a></li>
 				{% else %}
 					<li {% if app.request.attributes.get('_route') == 'user.post.index' %}class="active"{% endif %}><a href="{{ path('user.post.index') }}">Liste des Posts</a></li>
+=======
+				{% if userStatus is defined and userStatus == 0 %}
+					<li {% if app.request.attributes.get('_route') == 'admin.post.index' %}class="active"{% endif %}><a href="/admin/post">Liste des Posts</a></li>
+				{% else %}
+					<li {% if app.request.attributes.get('_route') == 'user.post.index' %}class="active"{% endif %}><a href="/user/post">Liste des Posts</a></li>
+>>>>>>> 78fb58bf05c8f336cebfc90d0f81c3659a00c641
 				{% endif %}
 							
 				{% if userName is defined and userName != null %}
 					{% if userStatus is defined and userStatus == 0 %}
+<<<<<<< HEAD
 						<li {% if app.request.attributes.get('_route') == 'admin.category.index' %}class="active"{% endif %}><a href="{{ path('admin.category.index') }}">Liste des Catégories</a></li>
 						<li {% if app.request.attributes.get('_route') == 'admin.comment.index' %}class="active"{% endif %}><a href="{{ path('admin.comment.index') }}">Liste des Commentaires</a></li>
 					{% endif %}
 					<li><a href="/logout">Déconnexion</a></li>
 				{% else %}
 					<li {% if app.request.attributes.get('_route') == 'connection' %}class="active"{% endif %}><a href="{{ path('connection') }}">Connexion</a></li>
+=======
+						<li {% if app.request.attributes.get('_route') == 'admin.category.index' %}class="active"{% endif %}><a href="/admin/category">Liste des Catégories</a></li>
+						<li {% if app.request.attributes.get('_route') == 'admin.comment.index' %}class="active"{% endif %}><a href="/admin/comment">Liste des Commentaires</a></li>
+					{% endif %}
+					<li><a href="/logout">Déconnexion</a></li>
+				{% else %}
+					<li {% if app.request.attributes.get('_route') == 'connection' %}class="active"{% endif %}><a href="/connection">Connexion</a></li>
+>>>>>>> 78fb58bf05c8f336cebfc90d0f81c3659a00c641
 				{% endif %}
 			</div>			
 		</ul>
