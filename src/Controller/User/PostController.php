@@ -96,6 +96,7 @@ class PostController extends AbstractController
                         'comments' => $comments,
                         'form' => $form->createView(),
                         'userName' => $request->getSession()->get('userName'),
+                        'userStatus' => $request->getSession()->get('userStatus'),
                     ]);
                 }
 
@@ -127,6 +128,7 @@ class PostController extends AbstractController
                 'comments' => $comments,
                 'form' => $form->createView(),
                 'userName' => $request->getSession()->get('userName'),
+                'userStatus' => $request->getSession()->get('userStatus'),
             ]);
         }
     }

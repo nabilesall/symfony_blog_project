@@ -1,5 +1,7 @@
 {% extends "bases/base.html.twig" %}
 
+{% block title %}Modifier catégorie{% endblock %}
+
 {% block body %}
 	<style>
 		.admin-category-edit-html{
@@ -47,8 +49,6 @@
 		}
 	</style>
 
-	<title>Category - Modifier</title>
-
 	<main class="admin-category-edit-html">
 		<div class="modifier-categorie">
 			<h3>Modifier catégorie</h3>
@@ -61,6 +61,5 @@
 			{{ form_end(form) }}
 
 		</div>
-
 	</main>
 {% endblock %}
