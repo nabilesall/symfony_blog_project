@@ -8,7 +8,7 @@ body {
 header nav {
   background-color: #333;
   color: #fff;
-  height: 50px;
+  height: 60px;
 }
 header nav ul {
   height: 100%;
@@ -31,6 +31,151 @@ header nav ul li a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+}
+
+main {
+  background: rgb(0, 212, 255);
+  background: linear-gradient(90deg, rgb(0, 212, 255) 21%, rgb(15, 121, 184) 61%, rgb(44, 44, 175) 93%);
+}
+
+.connection-form-html {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 60px;
+}
+.connection-form-html .connection-form {
+  width: 50%;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.connection-form-html .connection-form h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 15px;
+}
+.connection-form-html .connection-form form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.connection-form-html .connection-form .form-control {
+  box-sizing: border-box;
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  outline: none;
+}
+.connection-form-html .connection-form .btn-connecter {
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+.connection-form-html .connection-form .btn-connecter:hover {
+  background-color: #fff;
+  color: #000;
+}
+.connection-form-html .connection-form .alert-danger {
+  color: red;
+  font-weight: bold;
+}
+.connection-form-html .connection-form-footer {
+  margin-top: 20px;
+}
+.connection-form-html .connection-form-footer a {
+  color: #c4d9ef;
+  text-decoration: none;
+}
+.connection-form-html li {
+  list-style: none;
+}
+
+.insription-form-html {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 60px;
+}
+.insription-form-html .inscription-form {
+  width: 50%;
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.insription-form-html .inscription-form h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 15px;
+}
+.insription-form-html .inscription-form form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.insription-form-html .inscription-form .form-control {
+  box-sizing: border-box;
+  box-sizing: border-box;
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  outline: none;
+}
+.insription-form-html .inscription-form .btn-inscrire {
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  outline: none;
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+.insription-form-html .inscription-form .btn-inscrire:hover {
+  background-color: #fff;
+  color: #000;
+}
+.insription-form-html .inscription-form .alert-danger {
+  color: red;
+  font-weight: bold;
+}
+.insription-form-html .inscription-form-footer {
+  margin-top: 20px;
+}
+.insription-form-html .inscription-form-footer a {
+  color: #c4d9ef;
+  text-decoration: none;
+}
+.insription-form-html li {
+  list-style: none;
 }
 
 /* footer */
