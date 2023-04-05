@@ -3,72 +3,6 @@
 {% block title %}Post - Créer{% endblock %}
 
 {% block body %}
-	<style>
-		.admin-post-create-html {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			padding: 60px;
-		}
-	
-		.ecrire-article{
-			width: 60%;
-			padding: 20px;
-			background-color: #fff;
-			border-radius: 5px;
-			box-shadow: 0 0 10px rgba(0,0,0,0.2);
-		}
-
-		.ecrire-article h3{
-			font-size: 20px;
-			font-weight: bold;
-			margin-bottom: 10px;
-			border-bottom: 1px solid #ccc;
-			padding-bottom: 15px;
-		}
-
-		.form-item-content, .form-item-title{
-			box-sizing : border-box;
-			width : 100%;
-			height : 200px;
-			padding : 10px;
-			border : 1px solid #ccc;
-			border-radius : 5px;
-			margin-bottom : 10px;
-			resize : vertical;
-			outline : none;
-		}
-
-		.form-item-title{
-			height : 30px;
-		}
-
-		.form-item-categories{
-			box-sizing : border-box;
-			padding : 10px;
-			width : 100%;
-			border : 1px solid #ccc;
-			border-radius : 5px;
-			margin-bottom : 15px;
-			display: flex;
-			gap: 20px;
-			flex-wrap: wrap;
-		}
-
-		.form-item-publish{
-			width : 100%;
-			height : 40px;
-			background-color : #000;
-			color : #fff;
-			border : none;
-			border-radius : 5px;
-			cursor : pointer;
-		}
-
-		.form-item-publish:hover{
-			background-color : #333;
-		}
-	</style>
 
 	<main class="admin-post-create-html">
 		<div class="ecrire-article">
@@ -83,6 +17,6 @@
 			
 			{{form_end(form)}}
 		</div>
-
 	</main>
+
 {% endblock %}
