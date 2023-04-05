@@ -524,6 +524,55 @@ main {
   font-weight: bold;
 }
 
+/*COMMENTAIRE*/
+.admin-comment-index-html {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px;
+  min-height: 60vh;
+}
+.admin-comment-index-html .comments {
+  width: 60%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.admin-comment-index-html .comments avisited {
+  color: unset;
+}
+.admin-comment-index-html .comments h3 {
+  margin-bottom: 20px;
+}
+.admin-comment-index-html .comments .body-comments {
+  display: flex;
+  justify-content: center;
+}
+.admin-comment-index-html .comments .table {
+  width: 100%;
+}
+.admin-comment-index-html .comments .table thead th {
+  vertical-align: center;
+  border-top: 2px solid #dee2e6;
+}
+.admin-comment-index-html .comments .table th,
+.admin-comment-index-html .comments .table td {
+  padding: 0.75rem;
+  vertical-align: center;
+  border-bottom: 2px solid #dee2e6;
+}
+.admin-comment-index-html .comments .table .btn-danger {
+  text-decoration: none;
+  color: #fff;
+  background-color: #007bff;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.admin-comment-index-html .comments .table .btn-danger:hover {
+  background-color: #e24e4e;
+}
+
 /* footer */
 footer {
   background-color: #333;
