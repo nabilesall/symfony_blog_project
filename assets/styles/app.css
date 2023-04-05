@@ -38,6 +38,121 @@ main {
   background: linear-gradient(90deg, rgb(0, 212, 255) 21%, rgb(15, 121, 184) 61%, rgb(44, 44, 175) 93%);
 }
 
+.home-html {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: #eee;
+}
+.home-html .welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg, rgb(2, 0, 36) 0%, rgb(7, 7, 99) 0%, rgb(9, 9, 121) 15%, rgb(6, 87, 173) 43%, rgb(0, 212, 255) 65%);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.home-html .welcome h1 {
+  color: #fff;
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+.home-html .welcome p {
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.home-html .welcome .categories {
+  margin: 30px;
+}
+.home-html .welcome .categories ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+}
+.home-html .welcome .categories ul li a {
+  color: #eee;
+  text-decoration: none;
+  border: 2px solid #ccc;
+  padding: 5px;
+  font-weight: bold;
+}
+.home-html .welcome .categories ul li a:hover {
+  background-color: #fff;
+  color: #000;
+  text-decoration: underline;
+}
+.home-html .message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.home-html .articles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: rgb(0, 212, 255);
+  background: linear-gradient(90deg, rgb(0, 212, 255) 13%, rgb(15, 121, 184) 43%, rgb(9, 9, 121) 87%);
+}
+.home-html .articles h1 {
+  color: #fff;
+  font-size: 30px;
+  margin: 0;
+}
+.home-html .articles .articles-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 50px;
+  justify-content: center;
+  margin: 40px;
+}
+.home-html .articles .articles-list .article {
+  width: 300px;
+  background: #eee;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+.home-html .articles .articles-list .article h3 {
+  font-size: 16px;
+  margin: 0;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ccc;
+}
+.home-html .articles .articles-list .article p {
+  font-size: 16px;
+  margin-top: 10px;
+  text-align: justify;
+}
+.home-html .articles .articles-list .article .article-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.home-html .articles .articles-list .article .article-footer p {
+  margin: 0;
+  font-size: 12px;
+  color: #000;
+  font-style: italic;
+  text-align: right;
+}
+.home-html .articles .articles-list .article .article-footer a {
+  text-decoration: none;
+  color: #0657ad;
+}
+
 .connection-form-html {
   display: flex;
   flex-direction: column;
