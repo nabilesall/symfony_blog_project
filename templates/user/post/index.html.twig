@@ -3,87 +3,11 @@
 {% block title %}Les postes{% endblock %}
 
 {% block body %}
-	<style>
 
-		.user-post-index-html {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-
-		.header-posts {
-			width: 100%;
-			font: 18px / 1.5 sans-serif;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			padding: 20px 0 20px 0;
-		}
-		
-		.header-posts h3 {
-			margin: 0;
-			padding: 0;
-			font-size: 1.5em;
-			font-weight: bold;
-		}
-
-		.posts {
-			display: flex;
-			width: 60%;
-			flex-direction: column;
-		}
-
-		.post-header {
-			display: flex;
-			justify-content: space-between;
-		}
-
-		.date-publication {
-			font-size: 0.8em;
-			color: #aaa;
-			margin: 0;
-    		align-self: center;
-		}
-
-		.single-post {
-			margin-bottom: 1em;			
-			background-color : #fff;
-			border-radius : 5px;
-			padding: 10px;
-			padding-bottom: 20px;
-			box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
-		}
-
-		.single-post .post-content{
-			text-align: justify;
-		}
-
-		.single-post a{
-			text-decoration: none;
-			color: #000;
-			font-weight: bold;
-			transition: all 0.3s ease;
-			border: 1px solid;
-			padding: 10px;
-			border-radius: 10px;
-		}
-
-		.single-post a:hover, .header-posts a:hover {
-			background-color: #000;
-			color: #fff;
-		}
-
-		.separator {
-			width: 100%;
-			height: 1px;
-			background-color: #eee;
-		}
-	</style>
-
-	<main class="user-post-index-html">
+	<main class="post-index-html">
 		<div class="posts">
 			<div class="header-posts">
-				<h3>posts</h3>
+				<h3>Postes</h3>
 			</div>
 
 			{% for post in posts %}
@@ -100,4 +24,5 @@
 
 		</div>
 	</main>
+	
 {% endblock %}

@@ -23,8 +23,15 @@ header nav ul {
 header nav ul .menu-navigation-droite {
   display: flex;
   flex-direction: row;
+  margin-right: 20px;
 }
-header nav ul .menu-navigation li.active {
+header nav ul .menu-navigation-droite .active {
+  background-color: #504b4b;
+}
+header nav ul .menu-navigation-gauche {
+  margin-left: 20px;
+}
+header nav ul .menu-navigation-gauche .active {
   background-color: #504b4b;
 }
 header nav ul li {
@@ -34,6 +41,7 @@ header nav ul li a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+  font-size: 18px;
 }
 
 main {
@@ -539,6 +547,9 @@ main {
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
+.admin-comment-index-html .comments a {
+  color: #a97575;
+}
 .admin-comment-index-html .comments avisited {
   color: unset;
 }
@@ -573,7 +584,332 @@ main {
   background-color: #e24e4e;
 }
 
-/* footer */
+/*POSTEs CREER*/
+.admin-post-create-html {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px;
+  min-height: 60vh;
+}
+.admin-post-create-html .ecrire-article {
+  width: 60%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.admin-post-create-html .ecrire-article h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 15px;
+}
+.admin-post-create-html .ecrire-article .form-item-content, .admin-post-create-html .ecrire-article .form-item-title {
+  box-sizing: border-box;
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  resize: vertical;
+  outline: none;
+}
+.admin-post-create-html .ecrire-article .form-item-title {
+  height: 30px;
+}
+.admin-post-create-html .ecrire-article .form-item-categories {
+  box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.admin-post-create-html .ecrire-article .form-item-publish {
+  width: 100%;
+  height: 40px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.admin-post-create-html .ecrire-article .form-item-publish:hover {
+  background-color: #333;
+}
+
+/*POSTES MODIFIER*/
+.admin-post-edit-html {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px;
+  min-height: 60vh;
+}
+.admin-post-edit-html .modifier-article {
+  width: 60%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.admin-post-edit-html .modifier-article .header-edit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  height: 60px;
+}
+.admin-post-edit-html .modifier-article .header-edit h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.admin-post-edit-html .modifier-article .header-edit a {
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
+  font-weight: bold;
+  border: 3px solid #eee;
+  border-radius: 50%;
+  padding: 5px;
+}
+.admin-post-edit-html .modifier-article .form-item-content, .admin-post-edit-html .modifier-article .form-item-title {
+  box-sizing: border-box;
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  resize: vertical;
+  outline: none;
+}
+.admin-post-edit-html .modifier-article .form-item-title {
+  height: 30px;
+  margin-top: 10px;
+}
+.admin-post-edit-html .modifier-article .form-item-categories {
+  box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.admin-post-edit-html .modifier-article .form-item-publish {
+  width: 100%;
+  height: 40px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.admin-post-edit-html .modifier-article .form-item-publish:hover {
+  background-color: #333;
+}
+.admin-post-edit-html .modifier-article .btn-group {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 5px;
+}
+
+/*POSTES INDEX */
+.post-index-html {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+  min-height: 60vh;
+}
+.post-index-html .posts {
+  display: flex;
+  width: 60%;
+  flex-direction: column;
+}
+.post-index-html .posts .single-post a, .post-index-html .posts .header-posts a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border: 1px solid;
+  padding: 10px;
+  border-radius: 10px;
+}
+.post-index-html .posts .single-post a:hover, .post-index-html .posts .header-posts a:hover {
+  background-color: #000;
+  color: #fff;
+}
+.post-index-html .posts .header-posts {
+  width: 100%;
+  font: 18px/1.5 sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0 20px 0;
+}
+.post-index-html .posts .header-posts h3 {
+  margin: 0;
+  padding: 0;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.post-index-html .posts .single-post {
+  margin-bottom: 1em;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  padding-bottom: 20px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+.post-index-html .posts .single-post .post-header {
+  display: flex;
+  justify-content: space-between;
+}
+.post-index-html .posts .single-post .post-header .date-publication {
+  font-size: 0.8em;
+  color: #aaa;
+  margin: 0;
+  align-self: center;
+}
+.post-index-html .posts .single-post .separator {
+  width: 100%;
+  height: 1px;
+  background-color: #eee;
+}
+.post-index-html .posts .single-post .post-content {
+  text-align: justify;
+}
+
+/*POSTES AFFICHER*/
+.post-show-html {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  padding: 60px;
+  min-height: 60vh;
+}
+.post-show-html .lecture, .post-show-html .ecrire-commentaire, .post-show-html .commentaires {
+  width: 60%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.post-show-html .lecture .lecture-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  height: 60px;
+}
+.post-show-html .lecture .lecture-header h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-bottom: 15px;
+}
+.post-show-html .lecture .lecture-header a {
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
+  font-weight: bold;
+  border: 3px solid #eee;
+  border-radius: 50%;
+  padding: 5px;
+}
+.post-show-html .lecture .lecture-content p {
+  font-size: 15px;
+  line-height: 1.5;
+  text-align: justify;
+}
+.post-show-html .lecture .tags {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 10px;
+}
+.post-show-html .lecture p {
+  margin: 0;
+}
+.post-show-html .lecture p:not(:first-child) {
+  font-size: 15px;
+  font-style: italic;
+}
+.post-show-html .lecture-footer p, .post-show-html .date-commentaire-partage {
+  font-size: 12px;
+  font-style: italic;
+  text-align: right;
+}
+.post-show-html .ecrire-commentaire h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 15px;
+}
+.post-show-html .ecrire-commentaire .form-control {
+  width: 100%;
+  height: 100px;
+  min-height: 100px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+.post-show-html .ecrire-commentaire .btn-submit {
+  width: 100%;
+  height: 40px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.post-show-html .ecrire-commentaire .btn-submit:hover {
+  background-color: #333;
+}
+.post-show-html .commentaires h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 15px;
+}
+.post-show-html .commentaires .commentaire-partage {
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+}
+.post-show-html .commentaires .nom-commentaire-partage {
+  font-size: 15px;
+  margin: 0;
+}
+.post-show-html .commentaires .content-commentaire-partage {
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+/* FOOTER */
 footer {
   background-color: #333;
   color: #fff;
