@@ -151,7 +151,7 @@
             <div class="categories">
                 <ul>
                     {% for category in categories %}
-                        {% if userStatus is defined and userStatus == 0 %}
+                        {% if userName is defined and userName != null and userStatus is defined and userStatus == 0 %}
                             <li><a href="{{ path('admin.category.show', {'id': category.id}) }}">{{ category.name }}</a></li>
                         {% else %}
                             <li><a href="{{ path('user.category.show', {'id': category.id}) }}">{{ category.name }}</a></li>
