@@ -24,6 +24,9 @@ header nav ul .menu-navigation-droite {
   display: flex;
   flex-direction: row;
 }
+header nav ul .menu-navigation li.active {
+  background-color: #504b4b;
+}
 header nav ul li {
   margin: 0 10px;
 }
@@ -301,6 +304,7 @@ main {
   align-items: center;
   gap: 15px;
   padding: 60px;
+  min-height: 60vh;
 }
 .category-show-html .single-category-container {
   display: flex;
@@ -377,6 +381,147 @@ main {
   width: 100%;
   height: 1px;
   background-color: #eee;
+}
+
+/*CATEGORIE CREER*/
+.admin-category-create-html {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+  min-height: 60vh;
+}
+.admin-category-create-html .creer-categorie {
+  width: 60%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.admin-category-create-html .creer-categorie h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 15px;
+}
+.admin-category-create-html .creer-categorie .category-name {
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  outline: none;
+}
+.admin-category-create-html .creer-categorie .btn-publish {
+  width: 100%;
+  height: 40px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/*CATEGORIE MODIFIER*/
+.admin-category-edit-html {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+  min-height: 60vh;
+}
+.admin-category-edit-html .modifier-categorie {
+  width: 60%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.admin-category-edit-html .modifier-categorie h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 15px;
+}
+.admin-category-edit-html .modifier-categorie .category-name {
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  outline: none;
+}
+.admin-category-edit-html .modifier-categorie .btn-publish {
+  width: 100%;
+  height: 40px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/*CATOGORIE INDEX*/
+.admin-category-index-html {
+  display: flex;
+  justify-content: center;
+  padding: 60px;
+  min-height: 60vh;
+}
+.admin-category-index-html .categories {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%;
+}
+.admin-category-index-html .categories a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border: 1px solid;
+  padding: 10px;
+  border-radius: 10px;
+}
+.admin-category-index-html .categories a:hover {
+  background-color: #000;
+  color: #fff;
+}
+.admin-category-index-html .categories .header-categories {
+  width: 100%;
+  font: 18px/1.5 sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+.admin-category-index-html .categories .header-categories h3 {
+  margin: 0;
+  padding: 0;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.admin-category-index-html .categories .single-category {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+.admin-category-index-html .categories .single-category h3 {
+  margin: 0;
+  padding: 0;
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
 /* footer */
