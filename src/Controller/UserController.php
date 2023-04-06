@@ -32,8 +32,7 @@ class UserController extends AbstractController
             
             $userRepository = $doctrine->getRepository(User::class);
             $user = $userRepository->findOneBy([
-                'UserName' => $userForConnection->getUserName(),
-                //'UserPassword' => $userForConnection->getUserPassword()
+                'UserName' => $userForConnection->getUserName()
             ]);
 
             if ($user && password_verify($userForConnection->getUserPassword(), $user->getUserPassword())) {
@@ -43,8 +42,7 @@ class UserController extends AbstractController
             }else{
                 $form ->addError(new FormError('Nom d\'utilisateur ou mot de passe incorrect'));
                 return $this->render('connection.html.twig', [
-                    'form' => $form->createView(),
-                    'error' => 'Nom d\'utilisateur ou mot de passe incorrect'
+                    'form' => $form->createView()
                 ]);
             }
         }

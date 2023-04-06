@@ -45,7 +45,8 @@ class CategoryController extends AbstractController
             ]);
         }
         else{
-            return $this->redirectToRoute('connection');
+            //si l'utilisateur n'est pas admin, on le redirige vers la d'erreur
+            return $this->redirectToRoute('error');
         }
     }
 
@@ -85,7 +86,8 @@ class CategoryController extends AbstractController
             ]);
         }
         else{
-            return $this->redirectToRoute('connection');
+            //si l'utilisateur n'est pas admin, on le redirige vers la d'erreur
+            return $this->redirectToRoute('error');
         }
     }
 
@@ -131,7 +133,8 @@ class CategoryController extends AbstractController
             ]);
         }
         else{
-            return $this->redirectToRoute('connection');
+            //si l'utilisateur n'est pas admin, on le redirige vers la d'erreur
+            return $this->redirectToRoute('error');
         }
     }
 
@@ -170,7 +173,8 @@ class CategoryController extends AbstractController
                 'userStatus' => $request->getSession()->get('userStatus'),
             ]);
         }else{
-            return $this->redirectToRoute('connection');
+            //si l'utilisateur n'est pas admin, on le redirige vers la d'erreur
+            return $this->redirectToRoute('error');
         }
     }
 
@@ -190,6 +194,9 @@ class CategoryController extends AbstractController
             $categoryRepository->remove($category,true);
 
             return $this->redirectToRoute('admin.category.index');
+        }else{
+            //si l'utilisateur n'est pas admin, on le redirige vers la d'erreur
+            return $this->redirectToRoute('error');
         }
     }
 }
