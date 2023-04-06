@@ -41,13 +41,13 @@ class UserController extends AbstractController
                 return $this->redirectToRoute('home');                
             }else{
                 $form ->addError(new FormError('Nom d\'utilisateur ou mot de passe incorrect'));
-                return $this->render('connection.html.twig', [
+                return $this->render('userController/connection.html.twig', [
                     'form' => $form->createView()
                 ]);
             }
         }
 
-        return $this->render('connection.html.twig', [
+        return $this->render('userController/connection.html.twig', [
             'form' => $form->createView()
         ]);
     }
@@ -75,16 +75,17 @@ class UserController extends AbstractController
 
             if($exitUserName) {
                 $form ->addError(new FormError('Ce nom d\'utilisateur est déjà utilisé'));
-                return $this->render('inscription.html.twig', [
+                return $this->render('userController/inscription.html.twig', [
                     'form' => $form->createView()
                 ]);
             }
             else{
                 // Hasher le mot de passe
-                $plainPassword = $doctrine->getRepository(User::class)->getUserPassword();
+                $plainPassword = $userForInscription->getUserPassword();
                 $hashedPassword = password_hash($plainPassword, PASSWORD_DEFAULT, ['cost' => 12]);
                 $userForInscription->setUserPassword($hashedPassword);
 
+                $userRepository = $doctrine->getRepository(User::class);
                 $userRepository -> save($userForInscription,true);
 
                 return $this->redirectToRoute('connection');
@@ -92,7 +93,7 @@ class UserController extends AbstractController
             
         }
 
-        return $this->render('inscription.html.twig', [
+        return $this->render('userController/inscription.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -107,6 +108,114 @@ class UserController extends AbstractController
         $request->getSession()->set('userName', null);
         $request->getSession()->set('userStatus', null);
         return $this->redirectToRoute('connection');
+    }
+
+
+    /**
+     * Cette methode permet de voir le profil
+     * @Route("/profil/{name}", name="profil")
+     */
+    public function profil(Request $request, ManagerRegistry $doctrine, $name): Response
+    {
+        $userName = $request->getSession()->get('userName');
+        $userStatus = $request->getSession()->get('userStatus');
+
+        if($userName  == $name && isset($userStatus) ) {
+            $user = $doctrine->getRepository(User::class)->findOneBy([
+                'UserName' => $name
+            ]);
+
+            return $this->render('userController/profil.html.twig', [
+                'userName' => $user->getUserName(),
+                'userStatus' => $user->getUserStatus(),
+                'user' => $user
+            ]);
+        }else{
+            return $this->redirectToRoute('connection');
+        }
+    }
+
+    /**
+     * Cette methode permet de modifier le profil
+     * @Route("/profil/{name}/edit", name="profil.edit")
+     */
+    public function profilEdit(Request $request, ManagerRegistry $doctrine, $name): Response
+    {
+        $userName = $request->getSession()->get('userName');
+        $userStatus = $request->getSession()->get('userStatus');
+
+        if($userName  == $name && isset($userStatus) ) {
+            $userFound = $doctrine->getRepository(User::class)->findOneBy([
+                'UserName' => $name
+            ]);
+
+            $form = $this->createForm(InscriptionType::class, $userFound);
+
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $user = $form->getData();
+
+                $exitUserName = $doctrine->getRepository(User::class)->findOneBy([
+                    'UserName' => $user->getUserName()
+                ]);
+
+                if($exitUserName && $exitUserName->getId() != $user->getId()) {
+                    $form ->addError(new FormError('Ce nom d\'utilisateur est déjà utilisé'));
+                    return $this->render('userController/profilEdit.html.twig', [
+                        'userName' => $userFound->getUserName(),
+                        'userStatus' => $userFound->getUserStatus(),
+                        'form' => $form->createView()
+                    ]);
+                }
+                else{
+                    // Hasher le mot de passe
+                    $plainPassword = $user->getUserPassword();
+                    $hashedPassword = password_hash($plainPassword, PASSWORD_DEFAULT, ['cost' => 12]);
+                    $user->setUserPassword($hashedPassword);
+
+                    $userRepository = $doctrine->getRepository(User::class);
+                    $userRepository -> save($user,true);
+
+                    $request->getSession()->set('userName', $user->getUserName());
+
+                    return $this->redirectToRoute('profil',[
+                        'name' => $user->getUserName()
+                    ]);
+                } 
+            }
+
+            return $this->render('userController/profilEdit.html.twig', [
+                'userName' => $userFound->getUserName(),
+                'userStatus' => $userFound->getUserStatus(),
+                'form' => $form->createView()
+            ]);
+        }else{
+            return $this->redirectToRoute('connection');
+        }
+    }
+
+    /**
+     * Cette methode permet de supprimer le profil
+     * @Route("/profil/{name}/remove", name="profil.remove")
+     */
+    public function profilDelete(Request $request, ManagerRegistry $doctrine, $name): Response
+    {
+        $userName = $request->getSession()->get('userName');
+        $userStatus = $request->getSession()->get('userStatus');
+
+        if($userName  == $name && isset($userStatus) ) {
+            $user = $doctrine->getRepository(User::class)->findOneBy([
+                'UserName' => $name
+            ]);
+
+            $userRepository = $doctrine->getRepository(User::class);
+            $userRepository -> remove($user,true);
+
+            return $this->redirectToRoute('logout');
+        }else{
+            return $this->redirectToRoute('connection');
+        }
     }
 }
 
