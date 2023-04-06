@@ -1,6 +1,6 @@
 {% extends "bases/base.html.twig" %}
 
-{% block title %}catégorie{% endblock %}
+{% block title %}Catégorie{% endblock %}
 
 {% block body %}
 
@@ -10,13 +10,14 @@
 			{{category.name}}
 			
 			<div class="navigation">
-				<a href="{{ path('admin.category.index') }}">back to list</a>
+				<a href="{{ path('admin.category.index') }}">Revenir à la liste</a>
 				<a href="{{ path('admin.category.edit', {'id': category.id}) }}">Modifier</a>
 				<a href="{{ path('admin.category.remove', {'id': category.id}) }}">Supprimer</a>
 			</div>
 		</div>
 
 		<div class="posts">
+
 			{% for post in posts %}
 				<div class="single-post">
 					<div class="post-header">
@@ -28,6 +29,8 @@
 					<a href="{{ path('admin.post.show', {'id': post.id}) }}">Lire la suite</a>
 				</div>
 			{% endfor %}
+
 		</div>
 	</main>
+	
 {% endblock %}
