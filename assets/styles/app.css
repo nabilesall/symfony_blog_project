@@ -26,13 +26,17 @@ header nav ul .menu-navigation-droite {
   margin-right: 20px;
 }
 header nav ul .menu-navigation-droite .active {
-  background-color: #504b4b;
+  background-color: #0657ad;
+  padding: 2px;
+  border-radius: 5px;
 }
 header nav ul .menu-navigation-gauche {
   margin-left: 20px;
 }
 header nav ul .menu-navigation-gauche .active {
-  background-color: #504b4b;
+  background-color: #0657ad;
+  padding: 2px;
+  border-radius: 5px;
 }
 header nav ul li {
   margin: 0 10px;
@@ -1072,6 +1076,23 @@ footer {
   color: #fff;
   padding: 20px;
   text-align: center;
+}
+footer .contacts {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  gap: 20px;
+}
+footer .contacts a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+footer .contacts a:hover {
+  background-color: #0657ad;
+  color: #333;
 }
 footer .container {
   max-width: 960px;
