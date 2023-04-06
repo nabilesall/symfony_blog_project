@@ -1,4 +1,4 @@
-mage: php:
+image: php:8.1
 
 stages:
   - test
