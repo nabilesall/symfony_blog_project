@@ -44,8 +44,8 @@ class CommentController extends AbstractController
                 'userStatus' => $request->getSession()->get('userStatus'),
             ]);
         }else{
-            //si l'utilisateur n'est pas connecté, on le redirige vers la page de connexion
-            return $this->redirectToRoute('connection');
+            //si l'utilisateur n'est pas admin, on le redirige vers la d'erreur
+            return $this->redirectToRoute('error');
         }
     }
 
@@ -57,16 +57,23 @@ class CommentController extends AbstractController
      */
     public function remove(ManagerRegistry $doctrine, Request $request, $id)
     {
-        $commentRepository = $doctrine->getRepository(Comment::class);
-        $comment = $commentRepository->findOneBy(['id' => $id]);
+        //on vérifie que l'admin est connecté
+        if($request->getSession()->get('userName')!= null && $request->getSession()->get('userStatus') == 0){
 
-        if($comment == null){
+            $commentRepository = $doctrine->getRepository(Comment::class);
+            $comment = $commentRepository->findOneBy(['id' => $id]);
+
+            if($comment == null){
+                return $this->redirectToRoute('admin.comment.index');
+            }
+
+            $commentRepository->remove($comment,true);
+
             return $this->redirectToRoute('admin.comment.index');
+        }else{
+            //si l'utilisateur n'est pas admin, on le redirige vers la d'erreur
+            return $this->redirectToRoute('error');
         }
-
-        $commentRepository->remove($comment,true);
-
-        return $this->redirectToRoute('admin.comment.index');
     }
 }
 

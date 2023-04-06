@@ -1,12 +1,15 @@
 {% extends "bases/base.html.twig" %}
 
-{% block title %}Post - Créer{% endblock %}
+{% block title %}Poste - Créer{% endblock %}
 
 {% block body %}
 
 	<main class="admin-post-create-html">
 		<div class="ecrire-article">
-			<h3>Ecrire un article</h3>
+			<div class="header-ecrire-article">
+				<h2>Créer un article</h2>
+				<a href="{{path('admin.post.index')}}" title="Annuler création">🔙</a>
+			</div>
 
 			{{form_start(form)}}
 
