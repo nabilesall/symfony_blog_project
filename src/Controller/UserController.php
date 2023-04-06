@@ -131,7 +131,7 @@ class UserController extends AbstractController
                 'user' => $user
             ]);
         }else{
-            return $this->redirectToRoute('connection');
+            return $this->redirectToRoute('error');
         }
     }
 
@@ -191,7 +191,7 @@ class UserController extends AbstractController
                 'form' => $form->createView()
             ]);
         }else{
-            return $this->redirectToRoute('connection');
+            return $this->redirectToRoute('error');
         }
     }
 
