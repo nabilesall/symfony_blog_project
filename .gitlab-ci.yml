@@ -13,7 +13,6 @@ before_script:
   - docker-php-ext-install mbstring pdo_pgsql curl intl gd xml zip bz2 opcache
   - curl -sS https://getcomposer.org/installer | php
   - php composer.phar install --no-dev --prefer-dist --no-progress --no-scripts
-  - source .env
 
 build:
   stage: build
