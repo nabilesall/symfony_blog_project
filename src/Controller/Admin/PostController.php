@@ -248,7 +248,7 @@ class PostController extends AbstractController
 
 
     /**
-     * Cette méthode permet de supprimer un article
+     * Cette méthode permet de supprimer un profil
      * 
      * @Route("admin/post/{id}/remove", name="admin.post.remove")
      */
