@@ -1271,7 +1271,15 @@ footer{
     }
 
     .container {
-        max-width: 960px;
         margin: 0 auto;
+
+        a{
+            text-decoration: none;
+            color: #ccc;
+
+            &:hover{
+                color: #688ae7;
+            }
+        }
     }
 }
