@@ -194,6 +194,7 @@ main{
 }
 
 
+/* USER */
 .connection-form-html{
     display: flex;
     flex-direction: column;
@@ -356,6 +357,45 @@ main{
 
 }
 
+
+.profil-html-twig{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px;
+    min-height: 60vh;
+
+    .resume{
+        width: 50%;
+        margin-bottom: 1em;
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 10px;
+        padding-bottom: 20px;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-group{
+        width: 50%;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #0657ad;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+
+            &:hover{
+                background-color: #0a3d7a;
+            }
+        }
+    }
+}
 
 /* CATEGORIE*/
 .category-show-html{

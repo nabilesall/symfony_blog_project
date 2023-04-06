@@ -1,0 +1,21 @@
+{% extends "bases/base.html.twig" %} 
+
+{% block title %}Page d'accueil{% endblock %}
+
+{% block body %} 
+
+    <main class="profil-html-twig">
+        <div class="resume">
+            <p>Identifiant : {{ user.UserName }}</p>
+            <p>Addresse mail : {{ user.UserMail }}</p>
+            <p>Mot de passe : *********</p>
+            
+        </div>
+
+        <div class="btn-group">
+            <a href="{{ path('profil.edit', {'name':user.UserName}) }}" class="btn btn-primary">Modifier</a>
+            <a href="{{ path('logout') }}">Déconnecter</a>
+        </div>
+    </main>
+
+{% endblock %}

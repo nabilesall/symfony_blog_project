@@ -18,7 +18,7 @@
 						<li {% if app.request.attributes.get('_route') == 'admin.category.index' %}class="active"{% endif %}><a href="{{ path('admin.category.index') }}">Liste des Catégories</a></li>
 						<li {% if app.request.attributes.get('_route') == 'admin.comment.index' %}class="active"{% endif %}><a href="{{ path('admin.comment.index') }}">Liste des Commentaires</a></li>
 					{% endif %}
-					<li><a href="/logout">Déconnexion</a></li>
+					<li><a href="{{ path('profil', {'name':userName}) }}">Profil</a></li>
 				{% else %}
 					<li {% if app.request.attributes.get('_route') == 'connection' %}class="active"{% endif %}><a href="{{ path('connection') }}">Connexion</a></li>
 				{% endif %}

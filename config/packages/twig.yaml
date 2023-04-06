@@ -1,9 +1,9 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
 
-framework:
+#framework:
     # ...
-    error_controller: App\Controller\CustomErrorController::show
+#    error_controller: App\Controller\CustomErrorController::show
 
 when@test:
     twig:
