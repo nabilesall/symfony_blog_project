@@ -26,13 +26,17 @@ header nav ul .menu-navigation-droite {
   margin-right: 20px;
 }
 header nav ul .menu-navigation-droite .active {
-  background-color: #504b4b;
+  background-color: #0657ad;
+  padding: 2px;
+  border-radius: 5px;
 }
 header nav ul .menu-navigation-gauche {
   margin-left: 20px;
 }
 header nav ul .menu-navigation-gauche .active {
-  background-color: #504b4b;
+  background-color: #0657ad;
+  padding: 2px;
+  border-radius: 5px;
 }
 header nav ul li {
   margin: 0 10px;
@@ -47,6 +51,13 @@ header nav ul li a {
 main {
   background: rgb(0, 212, 255);
   background: linear-gradient(90deg, rgb(0, 212, 255) 21%, rgb(15, 121, 184) 61%, rgb(44, 44, 175) 93%);
+}
+main .alert-danger {
+  color: red;
+  font-weight: bold;
+}
+main .alert-danger li {
+  list-style: none;
 }
 
 .home-html {
@@ -123,14 +134,14 @@ main {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 50px;
+  gap: 30px;
   justify-content: center;
-  margin: 40px;
+  margin: 20px;
 }
 .home-html .articles .articles-list .article {
   width: 300px;
   background: #eee;
-  padding: 20px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -164,6 +175,7 @@ main {
   color: #0657ad;
 }
 
+/* USER */
 .connection-form-html {
   display: flex;
   flex-direction: column;
@@ -209,18 +221,13 @@ main {
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  background-color: #000;
+  background-color: #0657ad;
   color: #fff;
   font-weight: bold;
   cursor: pointer;
 }
 .connection-form-html .connection-form .btn-connecter:hover {
-  background-color: #fff;
-  color: #000;
-}
-.connection-form-html .connection-form .alert-danger {
-  color: red;
-  font-weight: bold;
+  background-color: #0a3d7a;
 }
 .connection-form-html .connection-form-footer {
   margin-top: 20px;
@@ -228,9 +235,6 @@ main {
 .connection-form-html .connection-form-footer a {
   color: #c4d9ef;
   text-decoration: none;
-}
-.connection-form-html li {
-  list-style: none;
 }
 
 .insription-form-html {
@@ -280,18 +284,13 @@ main {
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   outline: none;
-  background-color: #000;
+  background-color: #0657ad;
   color: #fff;
   font-weight: bold;
   cursor: pointer;
 }
 .insription-form-html .inscription-form .btn-inscrire:hover {
-  background-color: #fff;
-  color: #000;
-}
-.insription-form-html .inscription-form .alert-danger {
-  color: red;
-  font-weight: bold;
+  background-color: #0a3d7a;
 }
 .insription-form-html .inscription-form-footer {
   margin-top: 20px;
@@ -300,8 +299,111 @@ main {
   color: #c4d9ef;
   text-decoration: none;
 }
-.insription-form-html li {
-  list-style: none;
+
+.profil-html-twig {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px;
+  min-height: 60vh;
+}
+.profil-html-twig .resume {
+  width: 50%;
+  margin-bottom: 1em;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  padding-bottom: 20px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+.profil-html-twig .btn-group {
+  width: 50%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.profil-html-twig .btn-group a {
+  text-decoration: none;
+  color: #fff;
+  background-color: #0657ad;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 18px;
+}
+.profil-html-twig .btn-group a:hover {
+  background-color: #0a3d7a;
+}
+
+.profil-edit-html {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 60px;
+}
+.profil-edit-html form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.profil-edit-html .modif-profil-form {
+  width: 50%;
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.profil-edit-html .modif-profil-form .header-modif-profil {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+}
+.profil-edit-html .modif-profil-form .header-modif-profil h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.profil-edit-html .modif-profil-form .header-modif-profil a {
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
+  font-weight: bold;
+  border: 3px solid #eee;
+  border-radius: 50%;
+  padding: 5px;
+}
+.profil-edit-html .modif-profil-form .form-control {
+  box-sizing: border-box;
+  box-sizing: border-box;
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  outline: none;
+}
+.profil-edit-html .modif-profil-form .btn-modifier {
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  outline: none;
+  background-color: #0657ad;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+.profil-edit-html .modif-profil-form .btn-modifier:hover {
+  background-color: #0a3d7a;
 }
 
 /* CATEGORIE*/
@@ -335,7 +437,6 @@ main {
 .category-show-html .single-category-container .navigation a {
   text-decoration: none;
   color: #000;
-  font-size: 1.2rem;
   font-weight: bold;
   border: 1px solid #000;
   border-radius: 10px;
@@ -343,7 +444,7 @@ main {
   transition: all 0.3s ease;
 }
 .category-show-html .single-category-container .navigation a:hover {
-  background-color: #000;
+  background-color: #0a3d7a;
   color: #fff;
 }
 .category-show-html .posts {
@@ -382,7 +483,7 @@ main {
   border-radius: 10px;
 }
 .category-show-html .posts .single-post a:hover {
-  background-color: #000;
+  background-color: #0a3d7a;
   color: #fff;
 }
 .category-show-html .posts .single-post .separator {
@@ -498,7 +599,7 @@ main {
   border-radius: 10px;
 }
 .admin-category-index-html .categories a:hover {
-  background-color: #000;
+  background-color: #0a3d7a;
   color: #fff;
 }
 .admin-category-index-html .categories .header-categories {
@@ -552,6 +653,9 @@ main {
 }
 .admin-comment-index-html .comments avisited {
   color: unset;
+}
+.admin-comment-index-html .comments a:hover {
+  color: #0a3d7a;
 }
 .admin-comment-index-html .comments h3 {
   margin-bottom: 20px;
@@ -652,14 +756,14 @@ main {
 .admin-post-create-html .ecrire-article .form-item-publish {
   width: 100%;
   height: 40px;
-  background-color: #000;
+  background-color: #0657ad;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 .admin-post-create-html .ecrire-article .form-item-publish:hover {
-  background-color: #333;
+  background-color: #0a3d7a;
 }
 
 /*POSTES MODIFIER*/
@@ -728,14 +832,14 @@ main {
 .admin-post-edit-html .modifier-article .form-item-publish {
   width: 100%;
   height: 40px;
-  background-color: #000;
+  background-color: #0657ad;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 .admin-post-edit-html .modifier-article .form-item-publish:hover {
-  background-color: #333;
+  background-color: #0a3d7a;
 }
 .admin-post-edit-html .modifier-article .btn-group {
   display: flex;
@@ -767,7 +871,7 @@ main {
   border-radius: 10px;
 }
 .post-index-html .posts .single-post a:hover, .post-index-html .posts .header-posts a:hover {
-  background-color: #000;
+  background-color: #0a3d7a;
   color: #fff;
 }
 .post-index-html .posts .header-posts {
@@ -894,14 +998,14 @@ main {
 .post-show-html .ecrire-commentaire .btn-submit {
   width: 100%;
   height: 40px;
-  background-color: #000;
+  background-color: #0657ad;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 .post-show-html .ecrire-commentaire .btn-submit:hover {
-  background-color: #333;
+  background-color: #0a3d7a;
 }
 .post-show-html .commentaires h3 {
   font-size: 20px;
@@ -973,9 +1077,32 @@ footer {
   padding: 20px;
   text-align: center;
 }
+footer .contacts {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  gap: 20px;
+}
+footer .contacts a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+footer .contacts a:hover {
+  background-color: #0657ad;
+  color: #333;
+}
 footer .container {
-  max-width: 960px;
   margin: 0 auto;
+}
+footer .container a {
+  text-decoration: none;
+  color: #ccc;
+}
+footer .container a:hover {
+  color: #688ae7;
 }
 
 /*# sourceMappingURL=app.css.map */

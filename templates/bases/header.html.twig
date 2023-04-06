@@ -3,7 +3,7 @@
 	<nav>
 		<ul class="menu-navigation">
 			<div class="menu-navigation-gauche">
-				<li {% if app.request.attributes.get('_route') == 'home' %}class="active"{% endif %}><a href="/">Blog</a></li>
+				<li {% if app.request.attributes.get('_route') == 'home' %}class="active"{% endif %}><a href="/">N'Blog</a></li>
 			</div>
 
 			<div class="menu-navigation-droite">
@@ -18,7 +18,7 @@
 						<li {% if app.request.attributes.get('_route') == 'admin.category.index' %}class="active"{% endif %}><a href="{{ path('admin.category.index') }}">Liste des Catégories</a></li>
 						<li {% if app.request.attributes.get('_route') == 'admin.comment.index' %}class="active"{% endif %}><a href="{{ path('admin.comment.index') }}">Liste des Commentaires</a></li>
 					{% endif %}
-					<li><a href="/logout">Déconnexion</a></li>
+					<li><a href="{{ path('profil', {'name':userName}) }}">Profile</a></li>
 				{% else %}
 					<li {% if app.request.attributes.get('_route') == 'connection' %}class="active"{% endif %}><a href="{{ path('connection') }}">Connexion</a></li>
 				{% endif %}
