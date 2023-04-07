@@ -8,9 +8,9 @@
 
 			<div class="menu-navigation-droite">
 				{% if userName is defined and userName != null and userStatus is defined and userStatus == 0 %}
-					<li {% if app.request.attributes.get('_route') == 'admin.post.index' %}class="active"{% endif %}><a href="{{ path('admin.post.index') }}">Liste des Posts</a></li>
+					<li {% if app.request.attributes.get('_route') == 'admin.post.index' %}class="active"{% endif %}><a href="{{ path('admin.post.index') }}">Liste des Postes</a></li>
 				{% else %}
-					<li {% if app.request.attributes.get('_route') == 'user.post.index' %}class="active"{% endif %}><a href="{{ path('user.post.index') }}">Liste des Posts</a></li>
+					<li {% if app.request.attributes.get('_route') == 'user.post.index' %}class="active"{% endif %}><a href="{{ path('user.post.index') }}">Liste des Postes</a></li>
 				{% endif %}
 							
 				{% if userName is defined and userName != null %}
