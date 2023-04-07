@@ -438,7 +438,6 @@ main .alert-danger li {
   text-decoration: none;
   color: #000;
   font-weight: bold;
-  border: 1px solid #000;
   border-radius: 10px;
   padding: 10px;
   transition: all 0.3s ease;
@@ -472,13 +471,13 @@ main .alert-danger li {
 }
 .category-show-html .posts .single-post .post-content {
   text-align: justify;
+  padding: 8px;
 }
 .category-show-html .posts .single-post a {
   text-decoration: none;
   color: #000;
   font-weight: bold;
   transition: all 0.3s ease;
-  border: 1px solid;
   padding: 10px;
   border-radius: 10px;
 }
@@ -597,7 +596,6 @@ main .alert-danger li {
   color: #000;
   font-weight: bold;
   transition: all 0.3s ease;
-  border: 1px solid;
   padding: 10px;
   border-radius: 10px;
 }
@@ -869,7 +867,6 @@ main .alert-danger li {
   color: #000;
   font-weight: bold;
   transition: all 0.3s ease;
-  border: 1px solid;
   padding: 10px;
   border-radius: 10px;
 }
@@ -916,6 +913,7 @@ main .alert-danger li {
 }
 .post-index-html .posts .single-post .post-content {
   text-align: justify;
+  padding: 8px;
 }
 
 /*POSTES AFFICHER*/
@@ -961,6 +959,7 @@ main .alert-danger li {
   font-size: 15px;
   line-height: 1.5;
   text-align: justify;
+  padding: 20px;
 }
 .post-show-html .lecture .tags {
   display: flex;

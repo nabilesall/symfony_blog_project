@@ -505,7 +505,6 @@ main{
                 text-decoration: none;
                 color: #000;
                 font-weight: bold;
-                border: 1px solid #000;
                 border-radius: 10px;
                 padding: 10px;
                 transition: all 0.3s ease;
@@ -545,6 +544,7 @@ main{
 
             .post-content{
                 text-align: justify;
+                padding: 8px;
             }
 
             a{
@@ -552,7 +552,6 @@ main{
                 color: #000;
                 font-weight: bold;
                 transition: all 0.3s ease;
-                border: 1px solid;
                 padding: 10px;
                 border-radius: 10px;
 
@@ -687,7 +686,6 @@ main{
 			color: #000;
 			font-weight: bold;
 			transition: all 0.3s ease;
-			border: 1px solid;
 			padding: 10px;
 			border-radius: 10px;
 
@@ -1000,7 +998,6 @@ main{
 			color: #000;
 			font-weight: bold;
 			transition: all 0.3s ease;
-			border: 1px solid;
 			padding: 10px;
 			border-radius: 10px;
 
@@ -1054,6 +1051,7 @@ main{
 
             .post-content{
                 text-align: justify;
+                padding: 8px;
             }
 		}
     }    
@@ -1109,6 +1107,7 @@ main{
                 font-size : 15px;
                 line-height : 1.5;
                 text-align : justify;
+                padding: 20px;
             }
         }
 
