@@ -291,7 +291,7 @@ main{
     padding: 60px;
 
     .inscription-form{
-        width: 50%;
+        width: $taille_containeur;
         background-color: #fff;
         padding: 20px;
         border: 1px solid #ccc;
@@ -576,7 +576,7 @@ main{
 }
 
 
-/*CATEGORIE CREER*/
+/* CATEGORIE CREER */
 .admin-category-create-html{
     display: flex;
     justify-content: center;

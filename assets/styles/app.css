@@ -246,7 +246,7 @@ main .alert-danger li {
   padding: 60px;
 }
 .inscription-form-html .inscription-form {
-  width: 50%;
+  width: 80%;
   background-color: #fff;
   padding: 20px;
   border: 1px solid #ccc;
@@ -494,7 +494,7 @@ main .alert-danger li {
   background-color: #eee;
 }
 
-/*CATEGORIE CREER*/
+/* CATEGORIE CREER */
 .admin-category-create-html {
   display: flex;
   justify-content: center;
