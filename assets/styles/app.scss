@@ -1,4 +1,6 @@
 /* sass assets/styles/app.scss assets/styles/app.css   */
+$taille_containeur: 80%;
+
 body {
     background-color: lightgray;
     margin: 0;
@@ -217,7 +219,7 @@ main{
     padding: 60px;
     
     .connection-form{
-        width: 50%;
+        width: $taille_containeur;
         padding: 20px;
         background-color: #fff;
         border: 1px solid #ccc;
@@ -280,7 +282,7 @@ main{
 }
 
 
-.insription-form-html{
+.inscription-form-html{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -362,7 +364,7 @@ main{
     min-height: 60vh;
 
     .resume{
-        width: 50%;
+        width: $taille_containeur;
         margin-bottom: 1em;
         background-color: #fff;
         border-radius: 5px;
@@ -487,16 +489,19 @@ main{
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+        gap: 20px;
         align-items: center;
-        width: 60%;
-        height: 20vh;
+        width: $taille_containeur;
+        height: fit-content;
         background-color: #fff;
         border-radius: 10px;
         box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+        padding: 20px;
+        box-sizing: border-box;
 
         .navigation{
 			display: flex;
-			justify-content: space-around;
+			justify-content: space-between;
 			align-items: center;
 			width: 100%;
 			height: 20%;
@@ -519,7 +524,7 @@ main{
 
     .posts {
         display: flex;
-        width: 60%;
+        width: $taille_containeur;
         flex-direction: column;
 
         .single-post {
@@ -580,7 +585,7 @@ main{
     min-height: 60vh;
 
     .creer-categorie{
-        width: 60%;
+        width: $taille_containeur;
         background-color: #fff;
         padding: 20px;
         border-radius: 10px;
@@ -631,7 +636,7 @@ main{
     min-height: 60vh;
 
     .modifier-categorie{
-        width: 60%;
+        width: $taille_containeur;
         background-color: #fff;
         padding: 20px;
         border-radius: 10px;
@@ -659,11 +664,15 @@ main{
 		.btn-publish{
 			width : 100%;
 			height : 40px;
-			background-color : #000;
+			background-color : #0657ad;
 			color : #fff;
 			border : none;
 			border-radius : 5px;
 			cursor : pointer;
+
+            &:hover{
+                background-color: #0a3d7a;
+            }
 		}
     }
 }
@@ -679,7 +688,7 @@ main{
         display: flex;
         flex-direction: column;
         justify-content: center;
-        width: 60%;
+        width: $taille_containeur;
 
         a{
             text-decoration: none;
@@ -737,11 +746,12 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 60px;
     min-height: 60vh;
 
     .comments{
-        width: 60%;
+        width: $taille_containeur;
         padding: 20px;
         background-color: #fff;
         border-radius: 5px;
@@ -803,11 +813,12 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 60px;
     min-height: 60vh;
 
     .ecrire-article{
-        width: 60%;
+        width: $taille_containeur;
         padding: 20px;
         background-color: #fff;
         border-radius: 5px;
@@ -844,7 +855,7 @@ main{
         .form-item-content, .form-item-title{
 			box-sizing : border-box;
 			width : 100%;
-			height : 200px;
+			height : 400px;
 			padding : 10px;
 			border : 1px solid #ccc;
 			border-radius : 5px;
@@ -891,11 +902,12 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 60px;
     min-height: 60vh;
 
     .modifier-article{
-        width: 60%;
+        width: $taille_containeur;
         padding: 20px;
         background-color: #fff;
         border-radius: 5px;
@@ -929,7 +941,7 @@ main{
         .form-item-content, .form-item-title{
 			box-sizing : border-box;
 			width : 100%;
-			height : 200px;
+			height : 400px;
 			padding : 10px;
 			border : 1px solid #ccc;
 			border-radius : 5px;
@@ -990,7 +1002,7 @@ main{
 
     .posts {
         display: flex;
-        width: 60%;
+        width: $taille_containeur;
         flex-direction: column;
 
         .single-post a, .header-posts a {
@@ -1068,7 +1080,7 @@ main{
     min-height : 60vh;
 
     .lecture,.ecrire-commentaire, .commentaires{
-        width:60%;
+        width: $taille_containeur;
         padding : 20px;
         background-color : #fff;
         border-radius : 5px;
