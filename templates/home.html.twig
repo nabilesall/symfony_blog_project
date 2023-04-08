@@ -28,7 +28,7 @@
         </div>
 
         <div class="articles">
-            <h1>Articles récent</h1>
+            <h1>Articles récents</h1>
             <div class="articles-list">
 
                 {% for article in articles %}
@@ -36,7 +36,7 @@
                         <h3>{{ article.title }}</h3>
                         <p>{{ article.content }}</p>
                         <div class="article-footer">
-                            {% if userStatus is defined and userStatus == 0 %}
+                            {% if userName is defined and userName != null and  userStatus is defined and userStatus == 0 %}
                                 <a href="{{ path('admin.post.show', {'id': article.id} ) }}">Lire la suite</a>
                             {% else %}
                                 <a href="{{ path('user.post.show', {'id': article.id} ) }}">Lire la suite</a>

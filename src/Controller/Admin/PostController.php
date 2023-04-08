@@ -45,8 +45,8 @@ class PostController extends AbstractController
             ]);
 
         }else{
-            //si l'utilisateur n'est pas connecté, on le redirige vers la page de connexion
-            return $this->redirectToRoute('connection');
+            //si l'utilisateur n'est pas admin, on le redirige vers la d'erreur
+            return $this->redirectToRoute('error');
         }
     }
 
@@ -91,8 +91,8 @@ class PostController extends AbstractController
                 'userStatus' => $request->getSession()->get('userStatus'),
             ]);
         }else{
-            //si l'utilisateur n'est pas admin, on le redirige vers la page de connexion
-            return $this->redirectToRoute('connection');
+            //si l'utilisateur n'est pas admin, on le redirige vers la d'erreur
+            return $this->redirectToRoute('error');
         }
     }
 
@@ -184,8 +184,8 @@ class PostController extends AbstractController
                 ]);
             }
         }else{
-            //si l'utilisateur n'est pas admin , on le redirige vers la page de connexion
-            return $this->redirectToRoute('connection');
+            //si l'utilisateur n'est pas admin, on le redirige vers la d'erreur
+            return $this->redirectToRoute('error');
         }
     }
 
@@ -241,14 +241,14 @@ class PostController extends AbstractController
                 'userStatus' => $request->getSession()->get('userStatus'),
             ]);
         }else{
-            //si l'utilisateur n'est pas admin, on le redirige vers la page de connexion
-            return $this->redirectToRoute('connection');
+            //si l'utilisateur n'est pas admin, on le redirige vers la d'erreur
+            return $this->redirectToRoute('error');
         }
     }
 
 
     /**
-     * Cette méthode permet de supprimer un article
+     * Cette méthode permet de supprimer un profil
      * 
      * @Route("admin/post/{id}/remove", name="admin.post.remove")
      */
@@ -268,6 +268,9 @@ class PostController extends AbstractController
             $entityManager->remove($post,true);
 
             return $this->redirectToRoute('admin.post.index');
+        }else{
+            //si l'utilisateur n'est pas admin, on le redirige vers la d'erreur
+            return $this->redirectToRoute('error');
         }
     }
 }

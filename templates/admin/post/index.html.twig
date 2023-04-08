@@ -8,7 +8,7 @@
 		<div class="posts">
 			<div class="header-posts">
 				<h3>Postes</h3>
-				<a href="/admin/post/create">Créer un post</a>
+				<a href="{{ path('admin.post.create') }}">Ecrire un article</a>
 			</div>
 
 			{% for post in posts %}
@@ -19,29 +19,10 @@
 					</div>
 					<div class="separator"></div>
 					<p class="post-content">{{ post.content }}</p>
-					<a href="/admin/post/{{ post.id }}">Lire la suite</a>
+					<a href="{{ path('admin.post.show', {'id' : post.id}) }}">Lire la suite</a>
 				</div>
 			{% endfor %}
 
-			<div class="single-post">
-				<div class="post-header">
-					<h2>Titre 1</h2>
-					<p class="date-publication">le 12/12/2020</p>
-				</div>
-				<div class="separator"></div>
-				<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique repellat optio vel, nemo minus maxime esse perferendis, nesciunt unde consequuntur, quia ea laudantium eum dolore officia cupiditate eos quos architecto</p>
-				<a href="/admin/post/2">Lire la suite</a>
-			</div>
-
-			<div class="single-post">
-				<div class="post-header">
-					<h2>Titre 1</h2>
-					<p class="date-publication">le 12/12/2020</p>
-				</div>
-				<div class="separator"></div>
-				<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique repellat optio vel, nemo minus maxime esse perferendis, nesciunt unde consequuntur, quia ea laudantium eum dolore officia cupiditate eos quos architecto</p>
-				<a href="/admin/post/2">Lire la suite</a>
-			</div>
 		</div>
 	</main>
 

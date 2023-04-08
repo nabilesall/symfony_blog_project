@@ -26,13 +26,17 @@ header nav ul .menu-navigation-droite {
   margin-right: 20px;
 }
 header nav ul .menu-navigation-droite .active {
-  background-color: #504b4b;
+  background-color: #0657ad;
+  padding: 2px;
+  border-radius: 5px;
 }
 header nav ul .menu-navigation-gauche {
   margin-left: 20px;
 }
 header nav ul .menu-navigation-gauche .active {
-  background-color: #504b4b;
+  background-color: #0657ad;
+  padding: 2px;
+  border-radius: 5px;
 }
 header nav ul li {
   margin: 0 10px;
@@ -47,6 +51,13 @@ header nav ul li a {
 main {
   background: rgb(0, 212, 255);
   background: linear-gradient(90deg, rgb(0, 212, 255) 21%, rgb(15, 121, 184) 61%, rgb(44, 44, 175) 93%);
+}
+main .alert-danger {
+  color: red;
+  font-weight: bold;
+}
+main .alert-danger li {
+  list-style: none;
 }
 
 .home-html {
@@ -123,14 +134,14 @@ main {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 50px;
+  gap: 30px;
   justify-content: center;
-  margin: 40px;
+  margin: 20px;
 }
 .home-html .articles .articles-list .article {
   width: 300px;
   background: #eee;
-  padding: 20px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -164,6 +175,7 @@ main {
   color: #0657ad;
 }
 
+/* USER */
 .connection-form-html {
   display: flex;
   flex-direction: column;
@@ -173,7 +185,7 @@ main {
   padding: 60px;
 }
 .connection-form-html .connection-form {
-  width: 50%;
+  width: 80%;
   padding: 20px;
   background-color: #fff;
   border: 1px solid #ccc;
@@ -209,18 +221,13 @@ main {
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  background-color: #000;
+  background-color: #0657ad;
   color: #fff;
   font-weight: bold;
   cursor: pointer;
 }
 .connection-form-html .connection-form .btn-connecter:hover {
-  background-color: #fff;
-  color: #000;
-}
-.connection-form-html .connection-form .alert-danger {
-  color: red;
-  font-weight: bold;
+  background-color: #0a3d7a;
 }
 .connection-form-html .connection-form-footer {
   margin-top: 20px;
@@ -229,11 +236,8 @@ main {
   color: #c4d9ef;
   text-decoration: none;
 }
-.connection-form-html li {
-  list-style: none;
-}
 
-.insription-form-html {
+.inscription-form-html {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -241,29 +245,29 @@ main {
   min-height: 60vh;
   padding: 60px;
 }
-.insription-form-html .inscription-form {
-  width: 50%;
+.inscription-form-html .inscription-form {
+  width: 80%;
   background-color: #fff;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
-.insription-form-html .inscription-form h3 {
+.inscription-form-html .inscription-form h3 {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 10px;
   border-bottom: 1px solid #ccc;
   padding-bottom: 15px;
 }
-.insription-form-html .inscription-form form {
+.inscription-form-html .inscription-form form {
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
 }
-.insription-form-html .inscription-form .form-control {
+.inscription-form-html .inscription-form .form-control {
   box-sizing: border-box;
   box-sizing: border-box;
   width: 60%;
@@ -273,35 +277,133 @@ main {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   outline: none;
 }
-.insription-form-html .inscription-form .btn-inscrire {
+.inscription-form-html .inscription-form .btn-inscrire {
   width: 60%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   outline: none;
-  background-color: #000;
+  background-color: #0657ad;
   color: #fff;
   font-weight: bold;
   cursor: pointer;
 }
-.insription-form-html .inscription-form .btn-inscrire:hover {
-  background-color: #fff;
-  color: #000;
+.inscription-form-html .inscription-form .btn-inscrire:hover {
+  background-color: #0a3d7a;
 }
-.insription-form-html .inscription-form .alert-danger {
-  color: red;
-  font-weight: bold;
-}
-.insription-form-html .inscription-form-footer {
+.inscription-form-html .inscription-form-footer {
   margin-top: 20px;
 }
-.insription-form-html .inscription-form-footer a {
+.inscription-form-html .inscription-form-footer a {
   color: #c4d9ef;
   text-decoration: none;
 }
-.insription-form-html li {
-  list-style: none;
+
+.profil-html-twig {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px;
+  min-height: 60vh;
+}
+.profil-html-twig .resume {
+  width: 80%;
+  margin-bottom: 1em;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  padding-bottom: 20px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+.profil-html-twig .btn-group {
+  width: 50%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.profil-html-twig .btn-group a {
+  text-decoration: none;
+  color: #fff;
+  background-color: #0657ad;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 18px;
+}
+.profil-html-twig .btn-group a:hover {
+  background-color: #0a3d7a;
+}
+
+.profil-edit-html {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 60px;
+}
+.profil-edit-html form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.profil-edit-html .modif-profil-form {
+  width: 80%;
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.profil-edit-html .modif-profil-form .header-modif-profil {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+}
+.profil-edit-html .modif-profil-form .header-modif-profil h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.profil-edit-html .modif-profil-form .header-modif-profil a {
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
+  font-weight: bold;
+  border: 3px solid #eee;
+  border-radius: 50%;
+  padding: 5px;
+}
+.profil-edit-html .modif-profil-form .form-control {
+  box-sizing: border-box;
+  box-sizing: border-box;
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  outline: none;
+}
+.profil-edit-html .modif-profil-form .btn-modifier {
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  outline: none;
+  background-color: #0657ad;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+.profil-edit-html .modif-profil-form .btn-modifier:hover {
+  background-color: #0a3d7a;
 }
 
 /* CATEGORIE*/
@@ -318,16 +420,19 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  gap: 20px;
   align-items: center;
-  width: 60%;
-  height: 20vh;
+  width: 80%;
+  height: fit-content;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  box-sizing: border-box;
 }
 .category-show-html .single-category-container .navigation {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 20%;
@@ -335,20 +440,18 @@ main {
 .category-show-html .single-category-container .navigation a {
   text-decoration: none;
   color: #000;
-  font-size: 1.2rem;
   font-weight: bold;
-  border: 1px solid #000;
   border-radius: 10px;
   padding: 10px;
   transition: all 0.3s ease;
 }
 .category-show-html .single-category-container .navigation a:hover {
-  background-color: #000;
+  background-color: #0a3d7a;
   color: #fff;
 }
 .category-show-html .posts {
   display: flex;
-  width: 60%;
+  width: 80%;
   flex-direction: column;
 }
 .category-show-html .posts .single-post {
@@ -371,18 +474,18 @@ main {
 }
 .category-show-html .posts .single-post .post-content {
   text-align: justify;
+  padding: 8px;
 }
 .category-show-html .posts .single-post a {
   text-decoration: none;
   color: #000;
   font-weight: bold;
   transition: all 0.3s ease;
-  border: 1px solid;
   padding: 10px;
   border-radius: 10px;
 }
 .category-show-html .posts .single-post a:hover {
-  background-color: #000;
+  background-color: #0a3d7a;
   color: #fff;
 }
 .category-show-html .posts .single-post .separator {
@@ -391,7 +494,7 @@ main {
   background-color: #eee;
 }
 
-/*CATEGORIE CREER*/
+/* CATEGORIE CREER */
 .admin-category-create-html {
   display: flex;
   justify-content: center;
@@ -400,7 +503,7 @@ main {
   min-height: 60vh;
 }
 .admin-category-create-html .creer-categorie {
-  width: 60%;
+  width: 80%;
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
@@ -426,11 +529,14 @@ main {
 .admin-category-create-html .creer-categorie .btn-publish {
   width: 100%;
   height: 40px;
-  background-color: #000;
+  background-color: #0657ad;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+.admin-category-create-html .creer-categorie .btn-publish:hover {
+  background-color: #0a3d7a;
 }
 
 /*CATEGORIE MODIFIER*/
@@ -442,7 +548,7 @@ main {
   min-height: 60vh;
 }
 .admin-category-edit-html .modifier-categorie {
-  width: 60%;
+  width: 80%;
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
@@ -468,37 +574,39 @@ main {
 .admin-category-edit-html .modifier-categorie .btn-publish {
   width: 100%;
   height: 40px;
-  background-color: #000;
+  background-color: #0657ad;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+.admin-category-edit-html .modifier-categorie .btn-publish:hover {
+  background-color: #0a3d7a;
 }
 
 /*CATOGORIE INDEX*/
 .admin-category-index-html {
   display: flex;
   justify-content: center;
-  padding: 60px;
+  padding: 20px 60px 60px 60px;
   min-height: 60vh;
 }
 .admin-category-index-html .categories {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 60%;
+  width: 80%;
 }
 .admin-category-index-html .categories a {
   text-decoration: none;
   color: #000;
   font-weight: bold;
   transition: all 0.3s ease;
-  border: 1px solid;
   padding: 10px;
   border-radius: 10px;
 }
 .admin-category-index-html .categories a:hover {
-  background-color: #000;
+  background-color: #0a3d7a;
   color: #fff;
 }
 .admin-category-index-html .categories .header-categories {
@@ -537,11 +645,12 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 60px;
   min-height: 60vh;
 }
 .admin-comment-index-html .comments {
-  width: 60%;
+  width: 80%;
   padding: 20px;
   background-color: #fff;
   border-radius: 5px;
@@ -552,6 +661,9 @@ main {
 }
 .admin-comment-index-html .comments avisited {
   color: unset;
+}
+.admin-comment-index-html .comments a:hover {
+  color: #0a3d7a;
 }
 .admin-comment-index-html .comments h3 {
   margin-bottom: 20px;
@@ -584,32 +696,51 @@ main {
   background-color: #e24e4e;
 }
 
-/*POSTEs CREER*/
+/*POSTES CREER*/
 .admin-post-create-html {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 60px;
   min-height: 60vh;
 }
 .admin-post-create-html .ecrire-article {
-  width: 60%;
+  width: 80%;
   padding: 20px;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
-.admin-post-create-html .ecrire-article h3 {
+.admin-post-create-html .ecrire-article .header-ecrire-article {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  height: 60px;
+  margin-bottom: 20px;
+}
+.admin-post-create-html .ecrire-article .header-ecrire-article h3 {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 10px;
   border-bottom: 1px solid #ccc;
   padding-bottom: 15px;
 }
+.admin-post-create-html .ecrire-article .header-ecrire-article a {
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
+  font-weight: bold;
+  border: 3px solid #eee;
+  border-radius: 50%;
+  padding: 5px;
+}
 .admin-post-create-html .ecrire-article .form-item-content, .admin-post-create-html .ecrire-article .form-item-title {
   box-sizing: border-box;
   width: 100%;
-  height: 200px;
+  height: 400px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -634,14 +765,14 @@ main {
 .admin-post-create-html .ecrire-article .form-item-publish {
   width: 100%;
   height: 40px;
-  background-color: #000;
+  background-color: #0657ad;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 .admin-post-create-html .ecrire-article .form-item-publish:hover {
-  background-color: #333;
+  background-color: #0a3d7a;
 }
 
 /*POSTES MODIFIER*/
@@ -649,11 +780,12 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 60px;
   min-height: 60vh;
 }
 .admin-post-edit-html .modifier-article {
-  width: 60%;
+  width: 80%;
   padding: 20px;
   background-color: #fff;
   border-radius: 5px;
@@ -684,7 +816,7 @@ main {
 .admin-post-edit-html .modifier-article .form-item-content, .admin-post-edit-html .modifier-article .form-item-title {
   box-sizing: border-box;
   width: 100%;
-  height: 200px;
+  height: 400px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -710,14 +842,14 @@ main {
 .admin-post-edit-html .modifier-article .form-item-publish {
   width: 100%;
   height: 40px;
-  background-color: #000;
+  background-color: #0657ad;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 .admin-post-edit-html .modifier-article .form-item-publish:hover {
-  background-color: #333;
+  background-color: #0a3d7a;
 }
 .admin-post-edit-html .modifier-article .btn-group {
   display: flex;
@@ -731,12 +863,12 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 60px;
+  padding: 20px 60px 60px 60px;
   min-height: 60vh;
 }
 .post-index-html .posts {
   display: flex;
-  width: 60%;
+  width: 80%;
   flex-direction: column;
 }
 .post-index-html .posts .single-post a, .post-index-html .posts .header-posts a {
@@ -744,12 +876,11 @@ main {
   color: #000;
   font-weight: bold;
   transition: all 0.3s ease;
-  border: 1px solid;
   padding: 10px;
   border-radius: 10px;
 }
 .post-index-html .posts .single-post a:hover, .post-index-html .posts .header-posts a:hover {
-  background-color: #000;
+  background-color: #0a3d7a;
   color: #fff;
 }
 .post-index-html .posts .header-posts {
@@ -791,6 +922,7 @@ main {
 }
 .post-index-html .posts .single-post .post-content {
   text-align: justify;
+  padding: 8px;
 }
 
 /*POSTES AFFICHER*/
@@ -803,7 +935,7 @@ main {
   min-height: 60vh;
 }
 .post-show-html .lecture, .post-show-html .ecrire-commentaire, .post-show-html .commentaires {
-  width: 60%;
+  width: 80%;
   padding: 20px;
   background-color: #fff;
   border-radius: 5px;
@@ -836,6 +968,7 @@ main {
   font-size: 15px;
   line-height: 1.5;
   text-align: justify;
+  padding: 20px;
 }
 .post-show-html .lecture .tags {
   display: flex;
@@ -876,14 +1009,14 @@ main {
 .post-show-html .ecrire-commentaire .btn-submit {
   width: 100%;
   height: 40px;
-  background-color: #000;
+  background-color: #0657ad;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 .post-show-html .ecrire-commentaire .btn-submit:hover {
-  background-color: #333;
+  background-color: #0a3d7a;
 }
 .post-show-html .commentaires h3 {
   font-size: 20px;
@@ -909,6 +1042,45 @@ main {
   text-align: justify;
 }
 
+/* ERROR */
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  gap: 40px;
+}
+.error h1 {
+  font: 40px Muli, sans-serif;
+  font-size: -webkit-xxx-large;
+  font-family: emoji;
+  color: #fff;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+}
+.error p {
+  width: 50%;
+  font: 16px Muli, sans-serif;
+  color: #eee;
+  font-size: 18px;
+  margin: 0;
+  text-align: center;
+}
+.error a {
+  text-decoration: none;
+  color: #fff;
+  background-color: #0657ad;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font: 16px Muli, sans-serif;
+  font-size: 18px;
+}
+.error a:hover {
+  background-color: #0a6ed1;
+}
+
 /* FOOTER */
 footer {
   background-color: #333;
@@ -916,9 +1088,32 @@ footer {
   padding: 20px;
   text-align: center;
 }
+footer .contacts {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  gap: 20px;
+}
+footer .contacts a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+footer .contacts a:hover {
+  background-color: #0657ad;
+  color: #333;
+}
 footer .container {
-  max-width: 960px;
   margin: 0 auto;
+}
+footer .container a {
+  text-decoration: none;
+  color: #ccc;
+}
+footer .container a:hover {
+  color: #688ae7;
 }
 
 /*# sourceMappingURL=app.css.map */

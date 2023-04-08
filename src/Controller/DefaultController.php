@@ -33,8 +33,7 @@ class DefaultController extends AbstractController
         }
 
         //On récupère les posts
-        $postRepository = $doctrine->getRepository(\App\Entity\Post::class);
-        //$post = $postRepository->findAll();      
+        $postRepository = $doctrine->getRepository(\App\Entity\Post::class);     
         $post = $postRepository->findBy(array(), array('publishedAt' => 'DESC'), 6);
 
         //on transforme les objets en tableau pour pouvoir les afficher dans twig avec un for
@@ -54,7 +53,6 @@ class DefaultController extends AbstractController
             'articles' => $post,
         ]);
     }
-
 }
 
 ?>
