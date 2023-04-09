@@ -16,13 +16,17 @@ use Symfony\Component\HttpFoundation\Response;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Form\FormError;
 
+
+/**
+ * @Route("/user", name="user.")
+ */
 class PostController extends AbstractController
 {
     /**
      * Cette méthode permet d'afficher la liste des articles
      * pour un utilisateur connecté ou non connecté
      * 
-     * @Route("user/post", name="user.post.index")
+     * @Route("/post", name="post.index")
      */
     public function index(Request $request, ManagerRegistry $doctrine): Response
     {
@@ -50,7 +54,7 @@ class PostController extends AbstractController
     /**
      * Cette méthode permet d'afficher un article
      * 
-     * @Route("user/post/{id}", name="user.post.show")
+     * @Route("/post/{id}", name="post.show")
      */
     public function show(Request $request, ManagerRegistry $doctrine, $id): Response
     {

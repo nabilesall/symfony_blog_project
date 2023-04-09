@@ -13,13 +13,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @Route("/admin", name="admin.")
+ */
 class CategoryController extends AbstractController
 {
     /**
      * Cette méthode permet d'afficher la liste des catégories
      * Elle est le point d'entrée de l'URL /admin/category
      * 
-     * @Route("/admin/category", name="admin.category.index")
+     * @Route("/category", name="category.index")
      */
     public function index(Request $request, ManagerRegistry $doctrine): Response
     {
@@ -55,7 +58,7 @@ class CategoryController extends AbstractController
      * Cette méthode permet d'afficher le formulaire de création d'une catégorie
      * Elle permet aussi de traiter le formulaire pour créer la catégorie
      * 
-     * @Route("/admin/category/create", name="admin.category.create")
+     * @Route("/category/create", name="category.create")
      */
     public function create(Request $request, ManagerRegistry $doctrine): Response
     {
@@ -95,7 +98,7 @@ class CategoryController extends AbstractController
     /**
      * Cette méthode permet d'afficher le détail d'une catégorie
      * 
-     * @Route("/admin/category/{id}", name="admin.category.show")
+     * @Route("/category/{id}", name="category.show")
      */
     public function show(Request $request, ManagerRegistry $doctrine, $id): Response
     {
@@ -143,7 +146,7 @@ class CategoryController extends AbstractController
      * Cette méthode permet d'afficher le formulaire d'édition d'une catégorie
      * Elle permet aussi de traiter le formulaire pour modifier la catégorie
      * 
-     * @Route("/admin/category/{id}/edit", name="admin.category.edit")
+     * @Route("/category/{id}/edit", name="category.edit")
      */
     public function edit(Request $request, ManagerRegistry $doctrine, $id): Response
     {
@@ -182,7 +185,7 @@ class CategoryController extends AbstractController
     /**
      * Cette méthode permet de supprimer une catégorie
      * 
-     * @Route("/admin/category/{id}/remove", name="admin.category.remove")
+     * @Route("/category/{id}/remove", name="category.remove")
      */
     public function remove(Request $request, ManagerRegistry $doctrine, $id): Response
     {

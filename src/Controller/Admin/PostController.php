@@ -13,12 +13,15 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\FormError;
 
+/**
+ * @Route("/admin", name="admin.")
+ */
 class PostController extends AbstractController
 {
     /**
      * Cette méthode permet d'afficher la liste des articles
      * 
-     * @Route("admin/post", name="admin.post.index")
+     * @Route("/post", name="post.index")
      */
     public function index(Request $request, ManagerRegistry $doctrine): Response
     {
@@ -54,7 +57,7 @@ class PostController extends AbstractController
     /**
      * Cette méthode permet de créer un article
      * 
-     * @Route("admin/post/create", name="admin.post.create")
+     * @Route("/post/create", name="post.create")
      */
     public function create(Request $request, ManagerRegistry $doctrine): Response
     {
@@ -99,7 +102,7 @@ class PostController extends AbstractController
     /**
      * Cette méthode permet d'afficher un article
      * 
-     * @Route("admin/post/{id}", name="admin.post.show")
+     * @Route("/post/{id}", name="post.show")
      */
     public function show(Request $request, ManagerRegistry $doctrine, $id): Response
     {
@@ -193,7 +196,7 @@ class PostController extends AbstractController
     /**
      * Cette méthode permet de modifier un article
      * 
-     * @Route("admin/post/{id}/edit", name="admin.post.edit")
+     * @Route("/post/{id}/edit", name="post.edit")
      */
     public function edit(Request $request, ManagerRegistry $doctrine, $id): Response
     {//fonctionne
@@ -250,7 +253,7 @@ class PostController extends AbstractController
     /**
      * Cette méthode permet de supprimer un profil
      * 
-     * @Route("admin/post/{id}/remove", name="admin.post.remove")
+     * @Route("/post/{id}/remove", name="post.remove")
      */
 
     public function remove(Request $request, ManagerRegistry $doctrine, $id): Response

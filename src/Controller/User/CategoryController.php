@@ -8,12 +8,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @Route("/user", name="user.")
+ */
 class CategoryController extends AbstractController
 {
     /**
      * Cette méthode permet d'afficher une catégorie
      * 
-     * @Route("/user/category/{id}", name="user.category.show")
+     * @Route("/category/{id}", name="category.show")
      */
     public function show(Request $request, ManagerRegistry $doctrine, $id): Response
     {

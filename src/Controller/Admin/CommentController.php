@@ -10,14 +10,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Persistence\ManagerRegistry;
 
-
+/**
+ * @Route("/admin", name="admin.")
+ */
 class CommentController extends AbstractController
 {
     /**
      * Cette méthode permet d'afficher la liste des commentaires
      * Elle est le point d'entrée de l'URL /admin/comment
      * 
-     * @Route("/admin/comment", name="admin.comment.index")
+     * @Route("/comment", name="comment.index")
      */
     public function index(ManagerRegistry $doctrine, Request $request)
     {
@@ -53,7 +55,7 @@ class CommentController extends AbstractController
     /**
      * Cette méthode permet de supprimer un commentaire
      * 
-     * @Route("/admin/comment/{id}/remove", name="admin.comment.remove")
+     * @Route("/comment/{id}/remove", name="comment.remove")
      */
     public function remove(ManagerRegistry $doctrine, Request $request, $id)
     {
